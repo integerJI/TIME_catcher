@@ -132,9 +132,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
@@ -142,8 +142,16 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
+
+# 로그인 페이지 지정
+LOGIN_URL = '/signin/'
+
+# 로그인 완료 후 나올 페이지
+LOGIN_REDIRECT_URL = 'index'
+
+# 로그아웃 후 나올 페이지
+LOGOUT_REDIRECT_URL = 'signin'
 
 STATIC_URL = '/static/'
