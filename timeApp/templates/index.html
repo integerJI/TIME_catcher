@@ -4,13 +4,15 @@
 <html lang="en">
 
 <head>
-
     <!-- Custom styles for this template-->
     <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
-
 </head>
 
 <body id="page-top">
+
+    {{ user.username }}
+    <br>
+    <a href="{% url 'mypage' %}">My Profile</a>
 
     <!-- Pie Chart -->
     <div class="col-xl-4 col-lg-5">
