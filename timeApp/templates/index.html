@@ -22,10 +22,17 @@
         <!-- Custom styles for this template-->
         <!-- 이건 뺄수도 있음 css가 다 무너짐-->
         <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+
+        <!-- stopwatch-->
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <!-- <script type="text/javascript" src="{% static 'js/stopwatch.js' %}"></script> -->
+        
     </head>
 
     <body>
 
+    
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container">
@@ -35,6 +42,13 @@
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#">CALENDER</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">MY PROFILE</a></li>
+                        <li class="nav-item">
+                        <a class="nav-link"><span id="user_name">{{ user.username }}</span>님 반갑습니다!</a>
+                        </li>
+
+
+
+
                     </ul>
                 </div>
             </div>
@@ -74,7 +88,19 @@
 
                         <p class="text-white-75 font-weight-normal mb-3" style="font-size: 23px;">내가 놓치고 있는<br>시간들은 얼마일까?</p>
                         <h1 class="text-uppercase text-white-90 font-weight-bold mb-4" style="font-size: 50px; color: black;">타임캐쳐,<br>더 나은<br>내일을 위한 선택</h1>
-                        <a class="btn btn-warning btn-xl js-scroll-trigger" href="#about">시작하기</a>
+                        <a class="btn btn-warning btn-xl js-scroll-trigger" id="startbtn" >시작하기</a>
+                        <a class="btn btn-warning btn-xl js-scroll-trigger" id="pausebtn" >일시정지</a>
+                        <a class="btn btn-warning btn-xl js-scroll-trigger" id="stopbtn" >정지</a>
+
+
+                        <div id='box' class="box">
+                            <div id='timerBox' class="timerBox">
+                                <div id="time" class="time">00:00:00</div>
+                            </div>
+                        </div>
+
+                        <a>오늘 저장한 시간은 {{sum}}</a>
+                    
 
                     </div>
                     </div>
@@ -87,7 +113,7 @@
                             <div class="chart-pie pt-4 pb-2">
                             <canvas id="myPieChart"></canvas>
                             </div>
-                            <div class="mt-4 text-center small">
+                            <!-- <div class="mt-4 text-center small">
                             <span class="mr-2">
                                 <i class="fas fa-circle text-primary"></i> Direct
                             </span>
@@ -97,7 +123,7 @@
                             <span class="mr-2">
                                 <i class="fas fa-circle text-info"></i> Referral
                             </span>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -125,7 +151,145 @@
         <!-- Page level plugins -->
         <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
         <!-- Page level custom scripts -->
-        <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+        <!-- <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script> -->
+
+
+<script>
+
+// Set new default font family and font color to mimic Bootstrap's default styling
+Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#858796';
+
+
+var a = "{{sum}}";
+
+console.log(a);
+
+// Pie Chart Example
+var ctx = document.getElementById("myPieChart");
+var myPieChart = new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: ["Direct", "Referral", "Social"],
+    datasets: [{
+      data: [45, 50],
+      backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+      hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+      hoverBorderColor: "rgba(234, 236, 244, 1)",
+    }],
+  },
+  options: {
+    maintainAspectRatio: false,
+    tooltips: {
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      caretPadding: 10,
+    },
+    legend: {
+      display: false
+    },
+    cutoutPercentage: 80,
+  },
+});
+
+// stop
+var time = 0;
+var starFlag = true;
+$(document).ready(function(){
+  buttonEvt();
+});
+
+function init(){
+  document.getElementById("time").innerHTML = "00:00:00";
+}
+
+function buttonEvt(){
+  var hour = 0;
+  var min = 0;
+  var sec = 0;
+  var timer;
+
+  // start btn
+  $("#startbtn").click(function(){
+
+    if(starFlag){
+      $(".fa").css("color","#FAED7D")
+      this.style.color = "#4C4C4C";
+      starFlag = false;
+
+      if(time == 0){
+        init();
+      }
+
+      timer = setInterval(function(){
+        time++;
+
+        min = Math.floor(time/60);
+        hour = Math.floor(min/60);
+        sec = time%60;
+        min = min%60;
+
+        var th = hour;
+        var tm = min;
+        var ts = sec;
+        if(th<10){
+        th = "0" + hour;
+        }
+        if(tm < 10){
+        tm = "0" + min;
+        }
+        if(ts < 10){
+        ts = "0" + sec;
+        }
+
+        document.getElementById("time").innerHTML = th + ":" + tm + ":" + ts;
+      }, 1000);
+    }
+  });
+
+  // pause btn
+  $("#pausebtn").click(function(){
+    if(time != 0){
+      $(".fa").css("color","#FAED7D")
+      this.style.color = "#4C4C4C";
+      clearInterval(timer);
+      starFlag = true;
+    }
+  });
+
+  // stop btn
+  $("#stopbtn").click(function(){
+
+    if(time != 0){
+      $(".fa").css("color","#FAED7D")
+      this.style.color = "#4C4C4C";
+      clearInterval(timer);
+      starFlag = true;
+
+      $.ajax({
+        type: "POST",
+        url: "{% url 'timesave' %}",
+        data: { 'csrfmiddlewaretoken': '{{ csrf_token }}', 'time': time },
+        dataType: "json"
+      });
+      
+      time = 0;
+      init();
+    }
+
+    
+
+  });
+}
+
+
+</script>
+
 
     </body>
 </html>

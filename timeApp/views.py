@@ -8,12 +8,20 @@ except ImportError:
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
+from django.db.models import Sum
+
 
 def index(request):
-    return render(request, 'index.html')
+    timesave = Timesave.objects.all()
+    sum = Timesave.objects.aggregate(Sum('save_date'))
 
-def home(request):
-    return render(request, 'home.html')
+    print(sum)
+    context = {
+        'timesave' : timesave,
+        'sum' : sum,
+    }
+
+    return render(request, 'index.html', context=context)
 
 @login_required
 @require_POST
@@ -22,7 +30,12 @@ def timesave(request):
         
         timesave = Timesave()
         timesave.save_user = User.objects.get(username = request.user.get_username())
+        
         timesave.save_date = request.POST.get('time')
         timesave.save()
 
         return HttpResponse(content_type='application/json')
+
+
+def home(request):
+    return render(request, 'home.html')
