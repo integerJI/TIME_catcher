@@ -40,5 +40,3 @@ def timesave(request):
         return HttpResponse(content_type='application/json')
 
 
-def home(request):
-    return render(request, 'home.html')

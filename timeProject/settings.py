@@ -83,7 +83,7 @@ ROOT_URLCONF = 'timeProject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['timeProject/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
