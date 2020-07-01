@@ -5,6 +5,82 @@
 
 
 
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <br>
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+            <div class="sidebar-brand-text mx-3">안녕하세요 :)<br>{{ id }}님</div>
+        </a>
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+            <div class="sidebar-brand-text mx-3">@{{ id }}</div>
+        </a>
+        <br>
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+            <a class="nav-link" href="#">
+                <span>개인정보 수정</span></a>
+        </li>
+
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+            <a class="nav-link" href="#">
+                <span>공지사항</span></a>
+        </li>
+
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+            <a class="nav-link" href="#">
+                <span>문의 / 건의하기</span></a>
+        </li>
+
+
+    </ul>
+    <!-- End of Sidebar -->
+
+
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <div id="content">
+
+            <div class="container-fluid">
+
+                <br>
+                <h3 class="mb-0">{{ id }}</h3>
+                {% if intro %}
+                <p class="card-text mb-auto">{{ intro | linebreaksbr}}</p>
+                {% else %}
+                {% endif %}
+                <br>
+                <a href="{% url 'profile_update' %}">Profile Update</a>
+                <a href="{% url 'index' %}">index</a>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+<!-- 
 <div class="cantrion">
     <div class="row justify-content-center">
         <div class="col-md-4 order-md-1">
@@ -25,6 +101,6 @@
         </div>
     </div>
 
-</div>
+</div> -->
 
 {% endblock %}
