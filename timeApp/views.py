@@ -13,12 +13,15 @@ from django.db.models import Sum
 
 def index(request):
     timesave = Timesave.objects.all()
-    sum = Timesave.objects.aggregate(Sum('save_date'))
+    sum = Timesave.objects.all().aggregate(Sum('save_date'))
+    values = sum.values()
 
-    print(sum)
+    for i in values:
+        print(i)
+
     context = {
         'timesave' : timesave,
-        'sum' : sum,
+        'sum' : i,
     }
 
     return render(request, 'index.html', context=context)

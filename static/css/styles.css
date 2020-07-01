@@ -10066,11 +10066,13 @@ hr.light {
     color: #fff;
   }
   #mainNav .navbar-nav .nav-item .nav-link {
-    color: rgba(255, 255, 255, 0.7);
+    /* color: rgba(255, 255, 255, 0.7); */
+    color: #000;
     padding: 0 1rem;
   }
   #mainNav .navbar-nav .nav-item .nav-link:hover {
-    color: #fff;
+    /* color: #fff; */
+    color: #0405;
   }
   #mainNav .navbar-nav .nav-item:last-child .nav-link {
     padding-right: 0;
