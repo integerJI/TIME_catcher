@@ -275,7 +275,16 @@ function buttonEvt(){
         type: "POST",
         url: "{% url 'timesave' %}",
         data: { 'csrfmiddlewaretoken': '{{ csrf_token }}', 'time': time },
-        dataType: "json"
+        dataType: "text",
+        success:function(data){
+            console.log('성공');
+            location.replace("{% url 'index' %}");
+        },
+        error:function(request, status, error){
+            console.log('실패');
+            console.log(request);
+            console.log(error);
+        }
       });
       
       time = 0;
