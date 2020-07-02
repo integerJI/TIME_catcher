@@ -9,10 +9,19 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
         <br>
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#" style="font-family: SDGtNeobUni-bLt;
+        font-size: 14px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.93;
+        letter-spacing: normal;
+        text-align: left;
+        color: #4c4c4c;
+      ">
             <div class="sidebar-brand-text mx-3">안녕하세요 :)<br>{{ id }}님</div>
         </a>
         <!-- Sidebar - Brand -->
@@ -25,7 +34,16 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{% url 'profile_update' %}" style="font-family: SDGtNeobUni-bLt;
+            font-size: 14px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.93;
+            letter-spacing: normal;
+            text-align: left;
+            color: #4c4c4c;
+          ">
                 <span>개인정보 수정</span></a>
         </li>
 
@@ -35,7 +53,16 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="#" style="font-family: SDGtNeobUni-bLt;
+            font-size: 14px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.93;
+            letter-spacing: normal;
+            text-align: left;
+            color: #4c4c4c;
+          ">
                 <span>공지사항</span></a>
         </li>
 
@@ -45,7 +72,16 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="#" style="font-family: SDGtNeobUni-bLt;
+            font-size: 14px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.93;
+            letter-spacing: normal;
+            text-align: left;
+            color: #4c4c4c;
+          ">
                 <span>문의 / 건의하기</span></a>
         </li>
 
@@ -67,8 +103,6 @@
                 {% else %}
                 {% endif %}
                 <br>
-                <a href="{% url 'profile_update' %}">Profile Update</a>
-                <a href="{% url 'index' %}">index</a>
             </div>
 
 
