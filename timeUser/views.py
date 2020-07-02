@@ -13,7 +13,9 @@ from django.urls import reverse_lazy
 from django.views import generic, View
 from django.contrib.auth.decorators import login_required
 from .forms import UserCreationMultiForm, ProfileForm, ProfileUpdateForm
+from django.db.models import Sum
 from .models import Profile
+from timeApp.models import Timesave
 # from myApp.models import Post
 
 def signup(request):
@@ -59,6 +61,18 @@ def userinfo(request):
     # posts = Post.objects.all().filter(create_user=conn_user).order_by('-id')
     conn_profile = Profile.objects.get(user=conn_user)
 
+
+    timesave = Timesave.objects.all()
+    sum = Timesave.objects.all().aggregate(Sum('save_date'))
+
+
+    values = sum.values()
+
+
+    for i in values:
+        print(i)
+
+
     if not conn_profile.profile_image:
         pic_url = ""
     else:
@@ -69,6 +83,8 @@ def userinfo(request):
         'nick' : conn_profile.nick,
         'profile_pic' : pic_url,
         'intro' : conn_profile.intro,
+        'timesave' : timesave,
+        'sum' : i,
         # 'posts' : posts,
     }
 

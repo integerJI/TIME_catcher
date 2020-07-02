@@ -14,7 +14,10 @@ from django.db.models import Sum
 def index(request):
     timesave = Timesave.objects.all()
     sum = Timesave.objects.all().aggregate(Sum('save_date'))
+
+
     values = sum.values()
+
 
     for i in values:
         print(i)
