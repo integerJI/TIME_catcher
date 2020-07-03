@@ -8,8 +8,12 @@
   <!-- Sidebar -->
   <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
     <br>
+
+
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#" style="font-family: SDGtNeobUni-bLt;
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" 
+    style="
+        font-family: SDGtNeobUni-bLt;
         font-size: 14px;
         font-weight: normal;
         font-stretch: normal;
@@ -17,14 +21,24 @@
         line-height: 1.93;
         letter-spacing: normal;
         text-align: left;
-        color: #4c4c4c;
-      ">
+        color: #4c4c4c;">
       <div class="sidebar-brand-text mx-3">안녕하세요 :)<br>{{ id }}님</div>
     </a>
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center"
+    style="
+        font-family: SDGtNeobUni-bLt;
+        font-size: 14px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.93;
+        letter-spacing: normal;
+        text-align: left;
+        color: #a0a0a0;">
       <div class="sidebar-brand-text mx-3">@{{ id }}</div>
     </a>
+
     <br>
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
@@ -39,9 +53,8 @@
             line-height: 1.93;
             letter-spacing: normal;
             text-align: left;
-            color: #4c4c4c;
-          ">
-        <span>개인정보 수정</span></a>
+            color: #4c4c4c;">
+        <span class="d-flex align-items-center justify-content-center">개인정보 수정</span></a>
     </li>
 
     <!-- Divider -->
@@ -57,9 +70,8 @@
             line-height: 1.93;
             letter-spacing: normal;
             text-align: left;
-            color: #4c4c4c;
-          ">
-        <span>공지사항</span></a>
+            color: #4c4c4c;">
+        <span class="d-flex align-items-center justify-content-center">공지사항</span></a>
     </li>
 
     <!-- Divider -->
@@ -75,15 +87,14 @@
             line-height: 1.93;
             letter-spacing: normal;
             text-align: left;
-            color: #4c4c4c;
-          ">
-        <span>문의 / 건의하기</span></a>
+            color: #4c4c4c;">
+        <span class="d-flex align-items-center justify-content-center">문의 / 건의하기</span></a>
     </li>
 
   </ul>
   <!-- End of Sidebar -->
 
-  <div id="content-wrapper" class="d-flex flex-column">
+  <div id="content-wrapper" class="d-flex flex-column" style="background-color: #f6f6f6;">
     <div id="content">
       <div class="container-fluid">
         <h3 class="mb-0">{{ sum }}</h3>
