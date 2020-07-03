@@ -30,15 +30,13 @@ class CreateUserForm(UserCreationForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['profile_image', 'intro', 'birth_date',]
+        fields = ['intro', 'birth_date',]
 
         widgets = {
             'intro': forms.TextInput(attrs={'class': 'form-control'}),
-            'profile_image' : forms.ClearableFileInput(attrs={'class': 'form-control-file', 'onchange': 'readURL(this);'}),
         }
 
         labels = {
-            'profile_image': '프로필 사진',
             'intro': '인사말',
         }
 
@@ -54,18 +52,15 @@ class LoginForm(forms.ModelForm):
         fields = ['username', 'password']
 
 class ProfileUpdateForm(forms.ModelForm):
-    profile_image = forms.ImageField(required=False)
 
     class Meta:
         model = Profile
-        fields = ['intro','profile_image']
+        fields = ['intro']
 
         widgets = {
             'intro': forms.TextInput(attrs={'class': 'form-control'}),
-            'profile_image' : forms.ClearableFileInput(attrs={'class': 'form-control-file', 'onchange': 'readURL(this);'}),
         }
 
         labels = {
-            'profile_image': '프로필 사진',
             'intro': '인사말',
         }

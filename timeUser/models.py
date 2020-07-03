@@ -14,7 +14,6 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     nick = models.CharField(verbose_name='NickName', max_length=50, blank=True,)
     intro = models.TextField(blank=True, max_length=200, )
-    profile_image = models.ImageField(blank=True, upload_to='usr')
     birth_date = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):

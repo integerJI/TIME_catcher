@@ -61,31 +61,20 @@ def userinfo(request):
     # posts = Post.objects.all().filter(create_user=conn_user).order_by('-id')
     conn_profile = Profile.objects.get(user=conn_user)
 
-
     timesave = Timesave.objects.all()
     sum = Timesave.objects.all().aggregate(Sum('save_date'))
 
-
     values = sum.values()
-
 
     for i in values:
         print(i)
 
-
-    if not conn_profile.profile_image:
-        pic_url = ""
-    else:
-        pic_url = conn_profile.profile_image.url
-            
     context = {
         'id' : conn_user.username,
         'nick' : conn_profile.nick,
-        'profile_pic' : pic_url,
         'intro' : conn_profile.intro,
         'timesave' : timesave,
         'sum' : i,
-        # 'posts' : posts,
     }
 
     return render(request, 'mypage.html', context=context)
@@ -121,7 +110,6 @@ class ProfileUpdateView(View):
             profile_form = ProfileUpdateForm(initial={
                 'nick': profile.nick,
                 'intro': profile.intro,
-                'profile_image': profile.profile_image,
             })
         else:
             profile_form = ProfileUpdateForm()
@@ -130,7 +118,6 @@ class ProfileUpdateView(View):
 
     def post(self, request):
         u = User.objects.get(id=request.user.pk)       
-
 
         if hasattr(u, 'profile'):
             profile = u.profile
@@ -143,16 +130,10 @@ class ProfileUpdateView(View):
             profile = profile_form.save(commit=False) 
             profile.user = u
             profile.save()
-
-            if not profile.profile_image:
-                pic_url = ""
-            else:
-                pic_url = profile.profile_image.url
                     
             context = {
                 'id' : u.username,
                 'nick' : profile.nick,
-                'profile_pic' : pic_url,
                 'intro' : profile.intro,
             }
 
