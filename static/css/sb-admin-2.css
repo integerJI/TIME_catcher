@@ -10405,7 +10405,7 @@ a:focus {
 }
 
 .sidebar-dark hr.sidebar-divider {
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid #f3f3f3;
 }
 
 .sidebar-dark .sidebar-heading {
