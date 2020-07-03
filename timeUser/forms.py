@@ -30,7 +30,7 @@ class CreateUserForm(UserCreationForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['profile_image', 'intro',]
+        fields = ['profile_image', 'intro', 'birth_date',]
 
         widgets = {
             'intro': forms.TextInput(attrs={'class': 'form-control'}),
