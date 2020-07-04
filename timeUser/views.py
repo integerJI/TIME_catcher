@@ -16,7 +16,6 @@ from .forms import UserCreationMultiForm, ProfileForm, ProfileUpdateForm
 from django.db.models import Sum
 from .models import Profile
 from timeApp.models import Timesave
-# from myApp.models import Post
 
 def signup(request):
     if request.method == 'POST':
@@ -58,7 +57,6 @@ signout = LogoutViews.as_view()
 @login_required
 def userinfo(request):
     conn_user = request.user
-    # posts = Post.objects.all().filter(create_user=conn_user).order_by('-id')
     conn_profile = Profile.objects.get(user=conn_user)
 
     timesave = Timesave.objects.all()
@@ -79,28 +77,6 @@ def userinfo(request):
     }
 
     return render(request, 'mypage.html', context=context)
-
-# @login_required
-# def user_select_info(request, writer):
-#     select_profile = Profile.objects.get(nick=writer)
-#     select_user = select_profile.user
-#     posts = Post.objects.all().filter(create_user=select_user).order_by('-id')
-
-#     if not select_profile.profile_image:
-#         pic_url = ""
-#     else:
-#         pic_url = select_profile.profile_image.url
-            
-#     context = {
-#         'id' : select_user.username,
-#         'nick' : select_profile.nick,
-#        'email' : conn_profile.email,
-#        'birth_date' : conn_profile.birth_date,
-#         'posts' : posts,
-#     }
-
-#     return render(request, 'userpage.html', context=context)
-
 
 class ProfileUpdateView(View): 
     def get(self, request):
