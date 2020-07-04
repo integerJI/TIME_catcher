@@ -1,6 +1,8 @@
 <form method="POST" action="{% url 'signup'%}" enctype="multipart/form-data">
     {%csrf_token%}
-    <div class="form-label-group">
+
+    {{form.email}}
+    <!-- <div class="form-label-group">
         <input type="text" name="user-username" class="form-control" placeholder="Login Id" maxlength="15">
         <small class="text-muted">15자 이하 문자, 숫자 그리고 @/./+/-/_만 가능합니다.</small>
     </div>
@@ -19,7 +21,7 @@
         <textarea class="form-control" id="id_profile-intro" rows="3" name="profile-intro" placeholder="About Me"
             maxlength="40"></textarea>
         <small class="text-muted">40자 이하 문자만 가능합니다.</small>
-    </div>
+    </div> -->
     <br>
     <button type="submit" class="form-control">Sign Up</button>
 </form>
