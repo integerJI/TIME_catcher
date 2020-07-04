@@ -30,14 +30,16 @@ class CreateUserForm(UserCreationForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['intro', 'birth_date',]
+        fields = ['email', 'birth_date',]
 
         widgets = {
-            'intro': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'birth_date': forms.DateInput(attrs={'class': 'form-control'}),
         }
 
         labels = {
-            'intro': '인사말',
+            'email': 'e-mail',
+            'birth_date': '생일',
         }
 
 class UserCreationMultiForm(MultiModelForm):
@@ -55,12 +57,14 @@ class ProfileUpdateForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ['intro']
+        fields = ['email','birth_date']
 
         widgets = {
-            'intro': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'birth_date': forms.DateInput(attrs={'class': 'form-control'}),
         }
 
         labels = {
-            'intro': '인사말',
+            'email': 'e-mail',
+            'birth_date': '생일',
         }

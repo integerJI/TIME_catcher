@@ -72,7 +72,8 @@ def userinfo(request):
     context = {
         'id' : conn_user.username,
         'nick' : conn_profile.nick,
-        'intro' : conn_profile.intro,
+        'email' : conn_profile.email,
+        'birth_date' : conn_profile.birth_date,
         'timesave' : timesave,
         'sum' : i,
     }
@@ -93,8 +94,8 @@ def userinfo(request):
 #     context = {
 #         'id' : select_user.username,
 #         'nick' : select_profile.nick,
-#         'profile_pic' : pic_url,
-#         'intro' : select_profile.intro,
+#        'email' : conn_profile.email,
+#        'birth_date' : conn_profile.birth_date,
 #         'posts' : posts,
 #     }
 
@@ -109,7 +110,8 @@ class ProfileUpdateView(View):
             profile = user.profile
             profile_form = ProfileUpdateForm(initial={
                 'nick': profile.nick,
-                'intro': profile.intro,
+                'email' : profile.email,
+                'birth_date' : profile.birth_date,
             })
         else:
             profile_form = ProfileUpdateForm()
@@ -133,8 +135,8 @@ class ProfileUpdateView(View):
                     
             context = {
                 'id' : u.username,
-                'nick' : profile.nick,
-                'intro' : profile.intro,
+                'email' : profile.email,
+                'birth_date' : profile.birth_date,
             }
 
             return render(request, 'mypage.html', context=context)

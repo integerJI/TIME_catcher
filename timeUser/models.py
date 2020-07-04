@@ -12,8 +12,8 @@ class Profile(models.Model):
         
     objects = models.Manager()
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    nick = models.CharField(verbose_name='NickName', max_length=50, blank=True,)
-    intro = models.TextField(blank=True, max_length=200, )
+    nick = models.CharField(verbose_name='NickName', max_length=50, null=True, blank=True)
+    email = models.EmailField(max_length = 50, null=True, blank=True)
     birth_date = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
