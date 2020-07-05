@@ -1,7 +1,7 @@
 <form method="POST" action="{% url 'signup'%}" enctype="multipart/form-data">
     {%csrf_token%}
 
-    {{form}}
+    {{form.as_p}}
     
     <br>
     <button type="submit" class="form-control">Sign Up</button>

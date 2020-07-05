@@ -25,7 +25,6 @@ def signup(request):
                 user = form['user'].save()
                 profile = form['profile'].save(commit=False)
                 profile.user = user
-                profile.nick = user
                 profile.save()
                 return redirect('signin')
             else:
