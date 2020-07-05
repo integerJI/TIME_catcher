@@ -65,7 +65,7 @@ def userinfo(request):
     values = sum.values()
 
     for i in values:
-        print(i)
+        continue
 
     context = {
         'id' : conn_user.username,
