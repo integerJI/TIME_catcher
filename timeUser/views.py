@@ -18,9 +18,9 @@ from .models import Profile
 from timeApp.models import Timesave
 
 def signup(request):
+    form = UserCreationMultiForm(request.POST, request.FILES)
     if request.method == 'POST':
         if request.POST['user-password1'] == request.POST['user-password2']:
-            form = UserCreationMultiForm(request.POST, request.FILES)
             if form.is_valid(): 
                 user = form['user'].save()
                 profile = form['profile'].save(commit=False)
@@ -36,7 +36,8 @@ def signup(request):
         else:
             messages.info(request, '비밀번호가 다릅니다.')
             return render(request, 'signup.html')
-    return render(request, 'signup.html')
+
+    return render(request, 'signup.html', { "form": form })
 
 
 class Loginviews(LoginView):
