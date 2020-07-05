@@ -2,43 +2,39 @@
 {% load static %}
 {% block content %}
 
-<!-- Page Wrapper -->
+<!--
+  <a>{{nick}} - 닉</a>
+  <br>
+  <a>{{email}} - 이메일</a>
+  <br>
+  <a>{{birth_date}} - 생일</a>
+  <br>
+-->
+
 <div id="wrapper">
-
-  <!-- Sidebar -->
   <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
-    
-    <a class="text-center" style="
-    font-family: SDGtNeobUni-gEb;
-    font-size: 20px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.35;
-    letter-spacing: normal;
-    text-align: left;
-    color: #3e3a39;">안녕하세요 :)<br>{{ id }}님</a>
-    
-    <a class="text-center" style="
-  font-family: SDGtNeobUni-bLt;
-  font-size: 14px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.93;
-  letter-spacing: normal;
-  text-align: left;
-  color: #a0a0a0;
-  letter-spacing: 0.38px;">@{{ id }}</a>
+    <li class="nav-item active">
+      <br>
+      <br>
+      <div class="container ml-4">
+        <div class="text-left">
+          <a
+            style="font-family: SDGtNeobUni-gEb; font-size: 20px; font-weight: normal; font-stretch: normal; font-style: normal; line-height: 1.35; letter-spacing: normal; text-align: left; color: #3e3a39;">안녕하세요
+            :)</a>
+          <br>
+          <a
+            style="font-family: SDGtNeobUni-gEb; font-size: 20px; font-weight: normal; font-stretch: normal; font-style: normal; line-height: 1.35; letter-spacing: normal; text-align: left; color: #3e3a39;">{{ id }}님</a>
+          <br>
+          <a
+            style=" font-family: SDGtNeobUni-bLt; font-size: 14px; font-weight: normal; font-stretch: normal; font-style: normal; line-height: 1.93; letter-spacing: normal; text-align: left; color: #a0a0a0; letter-spacing: 0.38px;">@{{ id }}</a>
+        </div>
+      </div>
+      <br>
+      <br>
+    </li>
 
-<a>{{nick}} - 닉</a>
-<a>{{email}} - 이메일</a>
-<a>{{birth_date}} - 생일</a>
-  
+    <a><hr style="border: solid 1px #f3f3f3;" class="mb-0 mt-0"></a>
 
-    <!-- Divider -->
-    <a><hr style="border: solid 1px #f3f3f3;" class ="mb-0 mt-0"></a>
-    <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
       <a class="nav-link" href="{% url 'profile_update' %}" style="font-family: SDGtNeobUni-bLt;
             font-size: 14px;
@@ -52,10 +48,8 @@
         <span class="d-flex align-items-center justify-content-center">개인정보 수정</span></a>
     </li>
 
-    <!-- Divider -->
-    <a><hr style="border: solid 1px #f3f3f3;" class ="mb-0 mt-0"></a>
+    <a><hr style="border: solid 1px #f3f3f3;" class="mb-0 mt-0"></a>
 
-    <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
       <a class="nav-link" href="#" style="font-family: SDGtNeobUni-bLt;
             font-size: 14px;
@@ -69,10 +63,8 @@
         <span class="d-flex align-items-center justify-content-center">공지사항</span></a>
     </li>
 
-    <!-- Divider -->
-    <a><hr style="border: solid 1px #f3f3f3;" class ="mb-0 mt-0"></a>
+    <a><hr style="border: solid 1px #f3f3f3;" class="mb-0 mt-0"></a>
 
-    <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
       <a class="nav-link" href="#" style="font-family: SDGtNeobUni-bLt;
             font-size: 14px;
@@ -85,23 +77,11 @@
             color: #4c4c4c;">
         <span class="d-flex align-items-center justify-content-center">문의 / 건의하기</span></a>
     </li>
-    <a><hr style="border: solid 1px #f3f3f3;" class ="mb-0 mt-0"></a>
-
+    <a><hr style="border: solid 1px #f3f3f3;" class="mb-0 mt-0"></a>
   </ul>
-  <!-- End of Sidebar -->
 
   <div id="content-wrapper" class="d-flex flex-column" style="background-color: #f6f6f6;">
     <div id="content">
-      <div class="container-fluid">
-        <h3 class="mb-0">{{ sum }}</h3>
-        <br>
-        <h3 class="mb-0">{{ id }}</h3>
-        {% if intro %}
-        <p class="card-text mb-auto">{{ intro | linebreaksbr}}</p>
-        {% else %}
-        {% endif %}
-        <br>
-      </div>
       <div class="chart-pie pt-4 pb-2">
         <canvas id="myPieChart"></canvas>
       </div>
