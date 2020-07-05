@@ -111,6 +111,7 @@ class ProfileUpdateView(View):
                     
             context = {
                 'id' : u.username,
+                'nick' : profile.nick,
                 'email' : profile.email,
                 'birth_date' : profile.birth_date,
             }
