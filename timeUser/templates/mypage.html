@@ -80,7 +80,7 @@
     <a><hr style="border: solid 1px #f3f3f3;" class="mb-0 mt-0"></a>
   </ul>
 
-  <div id="content-wrapper" class="d-flex flex-column" style="background-color: #f6f6f6;">
+  <div id="content-wrapper" class="d-flex align-items-center" style="background-color: #f6f6f6;">
     <div id="content">
       <div class="chart-pie pt-4 pb-2">
         <canvas id="myPieChart"></canvas>
@@ -91,8 +91,7 @@
 
 <script>
 
-  var a = "{{sum}}";
-  var b = Number(a)
+  var sum = Number("{{sum}}");
 
   // Pie Chart Example
   var ctx = document.getElementById("myPieChart");
@@ -101,7 +100,7 @@
     data: {
       labels: ["Direct", "Referral", "Social"],
       datasets: [{
-        data: [b, 50, 20],
+        data: [sum, 50, 20],
         backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
         hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
         hoverBorderColor: "rgba(234, 236, 244, 1)",
