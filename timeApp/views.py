@@ -27,4 +27,5 @@ def timesave(request):
 
         return HttpResponse(content_type='application/json')
 
-
+def calender(request):
+    return render(request, 'calender.html')
