@@ -1,5 +1,3 @@
-# myProject/myMember/forms.py
-
 from django import forms
 from django.db import models
 from .models import Profile
@@ -30,17 +28,15 @@ class CreateUserForm(UserCreationForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['nick', 'email', 'birth_date',]
+        fields = ['nick', 'birth_date',]
 
         widgets = {
             'nick': forms.TextInput(attrs={'class': 'form-control'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
             'birth_date': forms.DateInput(attrs={'class': 'form-control'}),
         }
 
         labels = {
             'nick': '이름',
-            'email': 'e-mail',
             'birth_date': '생일',
         }
 
@@ -59,16 +55,14 @@ class ProfileUpdateForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ['nick', 'email','birth_date']
+        fields = ['nick', 'birth_date']
 
         widgets = {
             'nick': forms.TextInput(attrs={'class': 'form-control'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
             'birth_date': forms.DateInput(attrs={'class': 'form-control'}),
         }
 
         labels = {
             'nick': '이름',
-            'email': 'e-mail',
             'birth_date': '생일',
         }

@@ -20,6 +20,7 @@ from timeApp.models import Timesave
 def signup(request):
     form = UserCreationMultiForm(request.POST, request.FILES)
     if request.method == 'POST':
+        userCheck = request.POST['user-username']
         if request.POST['user-password1'] == request.POST['user-password2']:
             if form.is_valid(): 
                 user = form['user'].save()
@@ -28,9 +29,12 @@ def signup(request):
                 profile.save()
                 return redirect('signin')
             else:
-                user = request.POST['user-username']
-                user = User.objects.get(username=user)
-                messages.info(request, '아이디가 중복됩니다.')
+                if User.objects.get(username=userCheck):
+                    print('아이디 중복')
+                    messages.info(request, '아이디가 중복됩니다.')
+                    return render(request, 'signup.html')        
+                print('회원가입 실패')
+                messages.info(request, '회원가입에 실패했습니다.')
                 return render(request, 'signup.html')
         else:
             messages.info(request, '비밀번호가 다릅니다.')

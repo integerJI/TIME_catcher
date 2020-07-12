@@ -1,5 +1,3 @@
-# myProject/myMember/urls.py
-
 from django.urls import path
 from . import views
 
