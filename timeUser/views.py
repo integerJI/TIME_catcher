@@ -1,5 +1,3 @@
-# myProject/myMember/views.py
-
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import auth
@@ -74,7 +72,6 @@ def userinfo(request):
     context = {
         'id' : conn_user.username,
         'nick' : conn_profile.nick,
-        'email' : conn_profile.email,
         'birth_date' : conn_profile.birth_date,
         'timesave' : timesave,
         'sum' : i,
@@ -90,7 +87,6 @@ class ProfileUpdateView(View):
             profile = user.profile
             profile_form = ProfileUpdateForm(initial={
                 'nick': profile.nick,
-                'email' : profile.email,
                 'birth_date' : profile.birth_date,
             })
         else:
@@ -116,7 +112,6 @@ class ProfileUpdateView(View):
             context = {
                 'id' : u.username,
                 'nick' : profile.nick,
-                'email' : profile.email,
                 'birth_date' : profile.birth_date,
             }
 
