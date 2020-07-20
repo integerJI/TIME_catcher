@@ -92,7 +92,7 @@ class ProfileUpdateView(View):
         else:
             profile_form = ProfileUpdateForm()
 
-        return render(request, 'profile_update.html', { "profile_form": profile_form, "profile": profile})
+        return render(request, 'profile_update.html', {"profile_form": profile_form, "profile": profile})
 
     def post(self, request):
         u = User.objects.get(id=request.user.pk)       
