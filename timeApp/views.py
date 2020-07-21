@@ -9,7 +9,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from django.db.models import Sum
-
+from timeUser.models import Profile
 
 def index(request):
     return render(request, 'index.html')
@@ -29,3 +29,15 @@ def timesave(request):
 
 def calender(request):
     return render(request, 'calender.html')
+
+def notices(request):
+    
+    conn_user = request.user
+    conn_profile = Profile.objects.get(user=conn_user)
+
+    context = {
+        'id' : conn_user.username,
+        'nick' : conn_profile.nick,
+    }
+
+    return render(request, 'notices.html', context=context)
