@@ -25,9 +25,9 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
 
   <!-- Core theme CSS (includes Bootstrap) -->
-  <link href="{% static 'css/styles.css' %}?v=1.1" rel="stylesheet" />
+  <link href="{% static 'css/styles.css' %}?v=1.5" rel="stylesheet" />
   <!-- Custom styles for this template-->
-  <link href="{% static 'css/sb-admin-2.min.css' %}?v=1.1" rel="stylesheet">
+  <link href="{% static 'css/sb-admin-2.min.css' %}?v=1.5" rel="stylesheet">
 
   <!-- stopwatch-->
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
@@ -41,14 +41,13 @@
   <!-- Third party plugin JS-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-  <script src="{% static 'vendor/chart.js/Chart.min.js' %}?v=1.0"></script>
+  <script src="{% static 'vendor/chart.js/Chart.min.js' %}?v=1.5"></script>
 
 </head>
 
 <body>
   <!-- TOP Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-white bg-white fixed-top py-3" id="mainNav">
-    <div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top py-3" id="mainNav">
       <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/tc-logo.png' %}" alt="tc-logo.png"
           style="width: 30%;"></a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -58,9 +57,9 @@
         <ul class="navbar-nav ml-auto my-2 my-lg-0">
           <li class="nav-item"><a class="nav-link" href="{% url 'calender' %}">CALENDER</a></li>
           <li class="nav-item"><a class="nav-link" href="{% url 'mypage' %}">MY PROFILE</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">햄버거메뉴</a></li>
         </ul>
       </div>
-    </div>
   </nav>
   {% block content %}
   {% endblock %}
