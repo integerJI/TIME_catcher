@@ -82,6 +82,8 @@ def userinfo(request):
 class ProfileUpdateView(View): 
     def get(self, request):
         user = get_object_or_404(User, pk=request.user.pk) 
+        conn_user = request.user
+        conn_profile = Profile.objects.get(user=conn_user)
 
         if hasattr(user, 'profile'):  
             profile = user.profile
@@ -91,8 +93,15 @@ class ProfileUpdateView(View):
             })
         else:
             profile_form = ProfileUpdateForm()
+            
+        context = {
+            'profile_form': profile_form,
+            'profile': profile,
+            'id' : conn_user.username,
+            'nick' : conn_profile.nick,
+        }
 
-        return render(request, 'profile_update.html', {"profile_form": profile_form, "profile": profile})
+        return render(request, 'profile_update.html', context=context)
 
     def post(self, request):
         u = User.objects.get(id=request.user.pk)       
