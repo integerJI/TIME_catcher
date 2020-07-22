@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib.auth.models import User
-from .models import Timesave
+from .models import Timesave, Notices, Customer
 try:
     from django.utils import simplejson as json
 except ImportError:
@@ -32,12 +32,15 @@ def calender(request):
 
 def notices(request):
     
+    notices = Notices.objects.all().order_by('-id')
+
     conn_user = request.user
     conn_profile = Profile.objects.get(user=conn_user)
 
     context = {
         'id' : conn_user.username,
         'nick' : conn_profile.nick,
+        'notices' : notices,
     }
 
     return render(request, 'notices.html', context=context)
@@ -45,12 +48,15 @@ def notices(request):
 
 def customer(request):
     
+    customers = Customer.objects.all().order_by('-id')
+
     conn_user = request.user
     conn_profile = Profile.objects.get(user=conn_user)
 
     context = {
         'id' : conn_user.username,
         'nick' : conn_profile.nick,
+        'customers' : customers,
     }
 
     return render(request, 'customer.html', context=context)

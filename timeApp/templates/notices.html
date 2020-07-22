@@ -5,5 +5,26 @@
 
 <h1>notices</h1>
 
-
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">TITLE</th>
+        <th scope="col">BODY</th>
+        <th scope="col">HIT</th>
+        <th scope="col">DATE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {% for notice in notices.all %}
+        <th scope="row">{{ notice.id }}</th>
+        <td>{{ notice.n_title }}</td>
+        <td>{{ notice.n_body }}</td>
+        <td>{{ notice.n_hit }}</td>
+        <td>{{ notice.n_input_date }}</td>
+        {% endfor %}
+      </tr>
+    </tbody>
+  </table>
 {% endblock %}
