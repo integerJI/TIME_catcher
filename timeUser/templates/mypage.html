@@ -1,85 +1,11 @@
-{% extends 'base.html' %}
+{% extends 'base_ side.html' %}
 {% load static %}
-{% block content %}
+{% block content_side %}
 
-<div id="wrapper">
-
-  <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
-
-    <li class="nav-item active d-flex justify-content-center" style="margin-top: 65%; margin-bottom: 35%;">
-      <div class="text-left">
-        <a
-          style="font-family: SDGtNeobUni-gEb; font-size: 20px; font-weight: normal; font-stretch: normal; font-style: normal; line-height: 1.35; letter-spacing: normal; text-align: left; color: #3e3a39;">안녕하세요
-          :)</a>
-        <br>
-        <a
-          style="font-family: SDGtNeobUni-gEb; font-size: 20px; font-weight: normal; font-stretch: normal; font-style: normal; line-height: 1.35; letter-spacing: normal; text-align: left; color: #3e3a39;">{{ id }}님</a>
-        <br>
-        <a
-          style=" font-family: SDGtNeobUni-bLt; font-size: 14px; font-weight: normal; font-stretch: normal; font-style: normal; line-height: 1.93; letter-spacing: normal; text-align: left; color: #a0a0a0; letter-spacing: 0.38px;">@{{ id }}</a>
-      </div>
-    </li>
-
-    <a><hr style="border: solid 1px #f3f3f3;" class="mb-0 mt-0"></a>
-
-    <li class="nav-item active">
-      <a class="nav-link" href="{% url 'profile_update' %}" style="font-family: SDGtNeobUni-bLt;
-            font-size: 14px;
-            font-weight: normal;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: 1.93;
-            letter-spacing: normal;
-            text-align: left;
-            color: #4c4c4c;">
-        <span class="d-flex align-items-center justify-content-center">개인정보 수정</span></a>
-    </li>
-
-    <a><hr style="border: solid 1px #f3f3f3;" class="mb-0 mt-0"></a>
-
-    <li class="nav-item active">
-      <a class="nav-link" href="#" style="font-family: SDGtNeobUni-bLt;
-            font-size: 14px;
-            font-weight: normal;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: 1.93;
-            letter-spacing: normal;
-            text-align: left;
-            color: #4c4c4c;">
-        <span class="d-flex align-items-center justify-content-center">공지사항</span></a>
-    </li>
-
-    <a><hr style="border: solid 1px #f3f3f3;" class="mb-0 mt-0"></a>
-
-    <li class="nav-item active">
-      <a class="nav-link" href="#" style="font-family: SDGtNeobUni-bLt;
-            font-size: 14px;
-            font-weight: normal;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: 1.93;
-            letter-spacing: normal;
-            text-align: left;
-            color: #4c4c4c;">
-        <span class="d-flex align-items-center justify-content-center">문의 / 건의하기</span></a>
-    </li>
-    <a><hr style="border: solid 1px #f3f3f3;" class="mb-0 mt-0"></a>
-
-  </ul>
-
-  <div id="content-wrapper" class="d-flex justify-content-center align-items-center" style="background-color: #f6f6f6;">
-    <div class="chart-container" style="position: relative; height:50vh; width:40vw">
       <canvas id="myPieChart"></canvas>
-    </div>
-  </div>
-  
-</div>
 
 <script>
-
   var sum = Number("{{sum}}");
-
   // Pie Chart Example
   var ctx = document.getElementById("myPieChart");
   var myPieChart = new Chart(ctx, {
@@ -111,7 +37,6 @@
       cutoutPercentage: 0,
     },
   });
-
 </script>
 
 {% endblock %}
