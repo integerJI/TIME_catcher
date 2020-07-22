@@ -62,5 +62,28 @@ def customer(request):
     return render(request, 'customer.html', context=context)
 
 
+def notices_create(request):
+
+    conn_user = request.user
+    conn_profile = Profile.objects.get(user=conn_user)
+
+    context = {
+        'id' : conn_user.username,
+        'nick' : conn_profile.nick,
+    }
+
+    return render(request, 'customer.html', context=context)
+
+def customer_create(request):
+
+    conn_user = request.user
+    conn_profile = Profile.objects.get(user=conn_user)
+
+    context = {
+        'id' : conn_user.username,
+        'nick' : conn_profile.nick,
+    }
+
+    return render(request, 'customer.html', context=context)
 
     
