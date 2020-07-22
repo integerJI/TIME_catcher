@@ -25,3 +25,19 @@ class Notices(models.Model):
     def update_counter(self):
         self.n_hit = self.n_hit + 1
         self.save()
+
+
+class Customer(models.Model):
+    objects = models.Manager()
+    c_title = models.CharField(max_length=100)
+    c_body = models.TextField()
+    c_hit = models.PositiveIntegerField(default=0)
+    c_input_date = models.DateTimeField('date published', default=timezone.now)
+
+    def __str__(self):
+        return self.c_title
+
+    @property
+    def update_counter(self):
+        self.c_hit = self.c_hit + 1
+        self.save()
