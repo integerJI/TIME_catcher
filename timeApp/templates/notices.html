@@ -3,22 +3,7 @@
 {% block content_side %}
 
 
-<div class="cantrion">
-    <div class="row justify-content-center">
-        <div class="col-md-2 order-md-2 mb-4">
-            <h3 class="mb-0">{{user.username}}</h3>
-            <form method="POST" class="post-form" enctype="multipart/form-data" action="">
-                {%csrf_token%}
-                {{ profile_form.as_p }}
-                <br>
-                <input type="submit" value="Update">
-                <a href="{% url 'index' %}">
-                    <button type="button">Cancel</button>
-                </a>
-            </form>
-        </div>
-    </div>
-</div>
+<h1>notices</h1>
 
 
 {% endblock %}
