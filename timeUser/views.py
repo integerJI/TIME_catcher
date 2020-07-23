@@ -14,6 +14,8 @@ from .forms import UserCreationMultiForm, ProfileForm, ProfileUpdateForm
 from django.db.models import Sum
 from .models import Profile
 from timeApp.models import Timesave
+from datetime import datetime
+from django.utils.dateformat import DateFormat
 
 def signup(request):
     form = UserCreationMultiForm(request.POST, request.FILES)
@@ -58,6 +60,10 @@ signout = LogoutViews.as_view()
 
 @login_required
 def userinfo(request):
+    
+    today = DateFormat(datetime.now()).format('Ymd')
+    print(today)
+
     conn_user = request.user
     conn_profile = Profile.objects.get(user=conn_user)
 
