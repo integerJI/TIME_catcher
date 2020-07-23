@@ -67,10 +67,10 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right">
                 {% if user.is_authenticated %}
-                <button class="dropdown-item" type="button">로그아웃</button>
+                <a href="{% url 'signout' %}" class="dropdown-item" type="button">로그아웃</a>
                 {% else %}
-                <button class="dropdown-item" type="button">로그인</button>
-                <button class="dropdown-item" type="button">회원가입</button>
+                <a href="{% url 'signin' %}" class="dropdown-item" type="button">로그인</a>
+                <a href="{% url 'signup' %}" class="dropdown-item" type="button">회원가입</a>
                 {% endif %}
               </div>
 
