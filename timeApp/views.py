@@ -62,6 +62,20 @@ def customer(request):
 
     return render(request, 'customer.html', context=context)
 
+def customer_detail(request, customer_id):
+    
+    customers = Customer.objects.all()
+
+    conn_user = request.user
+    conn_profile = Profile.objects.get(user=conn_user)
+
+    context = {
+        'id' : conn_user.username,
+        'nick' : conn_profile.nick,
+        'customers' : customers,
+    }
+
+    return render(request, 'customer_detail.html', context=context)
 
 def notices_create(request):
 
@@ -88,25 +102,22 @@ def customer_create(request):
     return render(request, 'customer_create.html', context=context)
 
 
-# def customer_create(request, customer_id):
+def customer_save(request):
 
-#     customer = Customer.objects.get(id=customer_id)
-#     conn_user = request.user
-#     conn_profile = Profile.objects.get(user=conn_user)
+    customer = Customer()
+    conn_user = request.user
+    conn_profile = Profile.objects.get(user=conn_user)
 
-#     context = {
-#         'id' : conn_user.username,
-#         'nick' : conn_profile.nick,
-#     }
+    context = {
+        'id' : conn_user.username,
+        'nick' : conn_profile.nick,
+    }
 
-#     if request.method == "POST":
-#         customer.c_title = request.POST['title']
-#         customer.c_body = request.POST['body']
-#         customer.c_input_date = timezone.datetime.now()
-#         customer.save()
-#         return redirect('/timeApp/customer_detail/' + str(customer.id))
-
-#     else :
-#         return render(request, 'customer_create.html', context=context)
+    customer.c_title = request.POST['title']
+    customer.c_body = request.POST['body']
+    customer.c_input_date = timezone.datetime.now()
+    customer.save()
+    
+    return redirect('/timeApp/customer_detail/' + str(customer.id), context=context)
 
     

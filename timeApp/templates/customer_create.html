@@ -6,7 +6,8 @@
     <h1>customer_create</h1>
     <br>
     <div class="container">
-      <form action="">
+      <form action="{% url 'customer_save' %}" method="POST">
+        {% csrf_token %}
         <h4>제목: </h4>
         <input type="text" name="title">
         <br>

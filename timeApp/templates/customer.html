@@ -14,15 +14,16 @@
         </tr>
       </thead>
       <tbody>
+        {% for customer in customers.all %}
         <tr>
-          {% for customer in customers.all %}
           <th scope="row">{{ customer.id }}</th>
           <td>{{ customer.c_title }}</td>
           <td>{{ customer.c_body }}</td>
           <td>{{ customer.c_hit }}</td>
           <td>{{ customer.c_input_date }}</td>
-          {% endfor %}
         </tr>
+        {% endfor %}
+
       </tbody>
     </table>
 
