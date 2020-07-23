@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.utils import timezone
 from django.contrib.auth.models import User
 from .models import Timesave, Notices, Customer
 try:
@@ -72,7 +73,7 @@ def notices_create(request):
         'nick' : conn_profile.nick,
     }
 
-    return render(request, 'customer.html', context=context)
+    return render(request, 'notices_create.html', context=context)
 
 def customer_create(request):
 
@@ -83,7 +84,29 @@ def customer_create(request):
         'id' : conn_user.username,
         'nick' : conn_profile.nick,
     }
+    
+    return render(request, 'customer_create.html', context=context)
 
-    return render(request, 'customer.html', context=context)
+
+# def customer_create(request, customer_id):
+
+#     customer = Customer.objects.get(id=customer_id)
+#     conn_user = request.user
+#     conn_profile = Profile.objects.get(user=conn_user)
+
+#     context = {
+#         'id' : conn_user.username,
+#         'nick' : conn_profile.nick,
+#     }
+
+#     if request.method == "POST":
+#         customer.c_title = request.POST['title']
+#         customer.c_body = request.POST['body']
+#         customer.c_input_date = timezone.datetime.now()
+#         customer.save()
+#         return redirect('/timeApp/customer_detail/' + str(customer.id))
+
+#     else :
+#         return render(request, 'customer_create.html', context=context)
 
     

@@ -8,5 +8,5 @@ urlpatterns = [
     path('notices/', views.notices, name='notices'),
     path('customer/', views.customer, name='customer'),
     path('notices_create/', views.notices_create, name='notices_create'),
-    path('customer_create/', views.custome_creater, name='customer_create'),
+    path('customer_create/', views.customer_create, name='customer_create'),
 ]
