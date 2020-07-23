@@ -153,7 +153,7 @@ LOGIN_URL = '/signin/'
 LOGIN_REDIRECT_URL = 'index'
 
 # 로그아웃 후 나올 페이지
-LOGOUT_REDIRECT_URL = 'signin'
+LOGOUT_REDIRECT_URL = 'index'
 
 STATIC_URL = '/static/'
 
