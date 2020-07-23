@@ -74,6 +74,19 @@
 
 <script>
 
+  var filter = "win16|win32|win64|mac|macintel";
+
+  if ( navigator.platform ) {
+    if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) {
+      //mobile
+      console.log('mobile 접속');
+    } else {
+      //pc
+      console.log('pc 접속');
+    }
+  }
+
+
   // Set new default font family and font color to mimic Bootstrap's default styling
   Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
   Chart.defaults.global.defaultFontColor = '#858796';
