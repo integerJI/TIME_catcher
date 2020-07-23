@@ -80,12 +80,12 @@
     if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) {
       //mobile
       console.log('mobile 접속');
+      location.replace("{% url 'mobile' %}");
     } else {
       //pc
       console.log('pc 접속');
     }
   }
-
 
   // Set new default font family and font color to mimic Bootstrap's default styling
   Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';

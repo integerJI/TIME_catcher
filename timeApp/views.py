@@ -31,6 +31,9 @@ def timesave(request):
 def calender(request):
     return render(request, 'calender.html')
 
+def mobile(request):
+    return render(request, 'mobile.html')
+
 def notices(request):
     
     notices = Notices.objects.all().order_by('-id')
