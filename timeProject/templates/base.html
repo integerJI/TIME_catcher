@@ -66,9 +66,12 @@
 
               </a>
               <div class="dropdown-menu dropdown-menu-right">
-                <button class="dropdown-item" type="button">Action</button>
-                <button class="dropdown-item" type="button">Another action</button>
-                <button class="dropdown-item" type="button">Something else here</button>
+                {% if user.is_authenticated %}
+                <button class="dropdown-item" type="button">로그아웃</button>
+                {% else %}
+                <button class="dropdown-item" type="button">로그인</button>
+                <button class="dropdown-item" type="button">회원가입</button>
+                {% endif %}
               </div>
 
           </li>
