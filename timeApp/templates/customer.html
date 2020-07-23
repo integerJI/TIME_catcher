@@ -17,7 +17,7 @@
         {% for customer in customers.all %}
         <tr>
           <th scope="row">{{ customer.id }}</th>
-          <td>{{ customer.c_title }}</td>
+          <td><a href="{% url 'customer_detail' customer.id %}">{{ customer.c_title }}</a></td>
           <td>{{ customer.c_body }}</td>
           <td>{{ customer.c_hit }}</td>
           <td>{{ customer.c_input_date }}</td>

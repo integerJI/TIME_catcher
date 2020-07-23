@@ -63,8 +63,8 @@ def customer(request):
     return render(request, 'customer.html', context=context)
 
 def customer_detail(request, customer_id):
-    
-    customers = Customer.objects.all()
+
+    customers = get_object_or_404(Customer, pk=customer_id)
 
     conn_user = request.user
     conn_profile = Profile.objects.get(user=conn_user)

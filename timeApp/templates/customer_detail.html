@@ -1,0 +1,30 @@
+{% extends 'base_side.html' %}
+{% load static %}
+{% block content_side %}
+<div id="content-wrapper" style="background-color: #f6f6f6;" class="d-flex justify-content-center">
+  <div class="cantrion" style="margin-top: 10%; width: 50%;">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">TITLE</th>
+          <th scope="col">BODY</th>
+          <th scope="col">HIT</th>
+          <th scope="col">DATE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">{{ customers.id }}</th>
+          <td>{{ customers.c_title }}</td>
+          <td>{{ customers.c_body }}</td>
+          <td>{{ customers.c_hit }}</td>
+          <td>{{ customers.c_input_date }}</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+</div>
+{% endblock %}
