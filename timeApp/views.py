@@ -80,6 +80,9 @@ def customer_detail(request, customer_id):
 
     return render(request, 'customer_detail.html', context=context)
 
+def customer_update(request):
+    return render(request, 'customer_update.html')
+
 def customer_create(request):
 
     conn_user = request.user

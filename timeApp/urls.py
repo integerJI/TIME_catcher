@@ -12,4 +12,5 @@ urlpatterns = [
     path('customer_create/', views.customer_create, name='customer_create'),
     path('customer_save/', views.customer_save, name='customer_save'),
     path('customer_detail/<int:customer_id>', views.customer_detail, name='customer_detail'),
+    path('customer_update/', views.customer_update, name='customer_update'),
 ]
