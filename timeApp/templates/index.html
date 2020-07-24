@@ -55,8 +55,8 @@
             <br>
             <figure class="figure">
               <img src="{% static 'img/timeImg/pizza.png' %}" id="timeImg" name="timeImg" class="figure-img img-fluid rounded" alt="timeImg">
-              <figcaption class="figure-caption">피자한판</figcaption>
-              <figcaption class="figure-caption">맛있는 피자를 구울 만큼의 시간이군요!</figcaption>
+              <figcaption class="figure-caption" id="mainTitle" name="subTitle">피자한판</figcaption>
+              <figcaption class="figure-caption" id="subTitle" name="subTitle">맛있는 피자를 구울 만큼의 시간이군요!</figcaption>
             </figure>
             
           </div>
@@ -170,9 +170,12 @@
 
           document.getElementById("time").innerHTML = th + ":" + tm + ":" + ts;
 
+          //timeImg change
+
           if (document.getElementById("time").innerHTML=='00:00:02'){
-            //timeImg change
             document.getElementById('timeImg').src="{% static 'img/timeImg/popkon.png' %}"
+            $("#mainTitle").text("안녕하세요!");
+
           } else if (document.getElementById("time").innerHTML=='00:00:04') {
             document.getElementById('timeImg').src="{% static 'img/timeImg/shower.png' %}"
           }
