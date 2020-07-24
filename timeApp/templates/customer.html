@@ -2,9 +2,18 @@
 {% load static %}
 {% block content_side %}
 <div id="content-wrapper" style="background-color: #f6f6f6;" class="d-flex justify-content-center">
-  <div class="cantrion" style="margin-top: 10%; width: 50%;">
+  <div class="cantrion" style="margin-top: 10%; width: 90%;">
     <table class="table">
       <thead>
+
+        <colgroup>
+          <col style="width: 20%;">
+          <col style="width: 20%;">
+          <col style="width: 20%;">
+          <col style="width: 20%;">
+          <col style="width: 20%;">
+        </colgroup>
+  
         <tr>
           <th scope="col">ID</th>
           <th scope="col">TITLE</th>
@@ -26,9 +35,10 @@
 
       </tbody>
     </table>
+    <div class="d-flex justify-content-end">
 
     <a href="{% url 'customer_create' %}" class="btn btn-primary">글쓰기</a>
-
+    </div>
   </div>
 </div>
 {% endblock %}
