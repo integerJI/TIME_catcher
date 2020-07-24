@@ -66,7 +66,6 @@ def customer(request):
     return render(request, 'customer.html', context=context)
 
 def customer_detail(request, customer_id):
-
     customers = get_object_or_404(Customer, pk=customer_id)
 
     conn_user = request.user
@@ -79,6 +78,28 @@ def customer_detail(request, customer_id):
     }
 
     return render(request, 'customer_detail.html', context=context)
+
+def customer_update(request, customer_id):
+    customers = get_object_or_404(Customer, pk=customer_id)
+    conn_user = request.user
+    conn_profile = Profile.objects.get(user=conn_user)
+
+    context = {
+        'id' : conn_user.username,
+        'nick' : conn_profile.nick,
+    }
+
+    if request.method == "POST":
+        customers.c_title = request.POST['title']
+        customers.c_body = request.POST['body']
+        customers.c_input_date = timezone.datetime.now()
+        customers.save()
+        return redirect('/timeApp/customer_detail/' + str(customer.id), context=context)
+
+    else:
+        return render(request, 'customer_create.html', context=context)
+
+
 
 def notices_create(request):
 
@@ -123,4 +144,3 @@ def customer_save(request):
     
     return redirect('/timeApp/customer_detail/' + str(customer.id), context=context)
 
-    

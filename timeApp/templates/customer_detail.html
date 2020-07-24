@@ -5,15 +5,18 @@
 {{customers.update_counter}}
 
 <div id="content-wrapper" style="background-color: #f6f6f6;" class="d-flex justify-content-center">
-  <div class="cantrion" style="margin-top: 10%; width: 50%;">
-  
+  <div class="cantrion" style="margin-top: 10%; width: 90%;">
 
-    <h1>{{ customers.c_title }}</h1>
-    <p>{{ customers.c_body }}</p>
-    <p>{{ customers.c_hit }}</p> 
-    <p>{{ customers.c_input_date }}</p> 
+    <h1 class="card-title pricing-card-title">{{ customers.c_title }} <small
+        class="text-muted">{{ customers.c_input_date }}</small></h1>
 
-    <a href="{% url 'customer' %}">돌아가기</a>
+    <p>{{ customers.c_body }} <small class="text-muted">{{ customers.c_hit }}</small></p>
+
+    <div class="d-flex justify-content-end">
+      <a href="{% url 'customer' %}" class="btn btn-primary">돌아가기</a>
+      <a href="{% url 'customer_update' customer_id %}" class="btn btn-primary">글수정</a>
+      <a href="{% url 'customer' %}" class="btn btn-primary">글삭제</a>
+    </div>
   </div>
 </div>
 {% endblock %}
