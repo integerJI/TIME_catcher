@@ -49,12 +49,12 @@
             <button type="button" class="btn btn-outline-light" disabled>내 시간</button>
             <div id='box' class="box">
               <div id='timerBox' class="timerBox">
-                <div id="time" class="time">00:00:00</div>
+                <a id="time" name="time" class="time">00:00:00</a>
               </div>
             </div>
             <br>
             <figure class="figure">
-              <img src="{% static 'img/timeImg/pizza.png' %}" class="figure-img img-fluid rounded" alt="...">
+              <img src="{% static 'img/timeImg/pizza.png' %}" id="timeImg" name="timeImg" class="figure-img img-fluid rounded" alt="timeImg">
               <figcaption class="figure-caption">피자한판</figcaption>
               <figcaption class="figure-caption">맛있는 피자를 구울 만큼의 시간이군요!</figcaption>
             </figure>
@@ -169,6 +169,14 @@
           }
 
           document.getElementById("time").innerHTML = th + ":" + tm + ":" + ts;
+
+          if (document.getElementById("time").innerHTML=='00:00:02'){
+            //timeImg change
+            document.getElementById('timeImg').src="{% static 'img/timeImg/popkon.png' %}"
+          } else if (document.getElementById("time").innerHTML=='00:00:04') {
+            document.getElementById('timeImg').src="{% static 'img/timeImg/shower.png' %}"
+          }
+
         }, 1000); // END timer
       }
     }); // END startbtn click
