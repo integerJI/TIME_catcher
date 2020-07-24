@@ -60,7 +60,7 @@ signout = LogoutViews.as_view()
 
 @login_required
 def userinfo(request):
-    
+
     today = DateFormat(datetime.now()).format('Ymd')
     print(today)
 
