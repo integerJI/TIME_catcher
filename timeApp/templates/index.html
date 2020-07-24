@@ -54,11 +54,12 @@
             </div>
             <br>
             <figure class="figure">
-              <img src="{% static 'img/timeImg/pizza.png' %}" id="timeImg" name="timeImg" class="figure-img img-fluid rounded" alt="timeImg">
+              <img src="{% static 'img/timeImg/pizza.png' %}" id="timeImg" name="timeImg"
+                class="figure-img img-fluid rounded" alt="timeImg">
               <figcaption class="figure-caption" id="mainTitle" name="subTitle">피자한판</figcaption>
               <figcaption class="figure-caption" id="subTitle" name="subTitle">맛있는 피자를 구울 만큼의 시간이군요!</figcaption>
             </figure>
-            
+
           </div>
 
         </div>
@@ -76,8 +77,8 @@
 
   var filter = "win16|win32|win64|mac|macintel";
 
-  if ( navigator.platform ) {
-    if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) {
+  if (navigator.platform) {
+    if (filter.indexOf(navigator.platform.toLowerCase()) < 0) {
       //mobile
       console.log('mobile 접속');
       location.replace("{% url 'mobile' %}");
@@ -172,12 +173,15 @@
 
           //timeImg change
 
-          if (document.getElementById("time").innerHTML=='00:00:02'){
-            document.getElementById('timeImg').src="{% static 'img/timeImg/popkon.png' %}"
-            $("#mainTitle").text("안녕하세요!");
+          if (document.getElementById("time").innerHTML == '00:00:02') {
+            document.getElementById('timeImg').src = "{% static 'img/timeImg/popkon.png' %}"
+            $("#mainTitle").text("팝콘!");
+            $("#subTitle").text("맛있어!");
 
-          } else if (document.getElementById("time").innerHTML=='00:00:04') {
-            document.getElementById('timeImg').src="{% static 'img/timeImg/shower.png' %}"
+          } else if (document.getElementById("time").innerHTML == '00:00:04') {
+            document.getElementById('timeImg').src = "{% static 'img/timeImg/shower.png' %}"
+            $("#mainTitle").text("샤워!");
+            $("#subTitle").text("좋았어!");
           }
 
         }, 1000); // END timer
