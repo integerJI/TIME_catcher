@@ -15,6 +15,7 @@
     <div class="d-flex justify-content-end">
       <a href="{% url 'customer' %}" class="btn btn-primary">돌아가기</a>
       <a href="{% url 'customer_update' customers.id %}" class="btn btn-primary">수정하기</a>
+      <a href="{% url 'customer_delete' customers.id %}" class="btn btn-primary">삭제하기</a>
     </div>
   </div>
 </div>

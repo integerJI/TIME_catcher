@@ -101,6 +101,12 @@ def customer_update(request, customers_id):
     else :
         return render(request, 'customer_update.html', context=context)
 
+def customer_delete(request, customers_id):
+    customers = Customer.objects.get(pk=customers_id)
+    customers.delete()
+    return redirect('/')
+
+
 def customer_create(request):
 
     conn_user = request.user
