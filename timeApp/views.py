@@ -104,7 +104,7 @@ def customer_update(request, customers_id):
 def customer_delete(request, customers_id):
     customers = Customer.objects.get(pk=customers_id)
     customers.delete()
-    return redirect('/')
+    return redirect('/timeApp/customer/')
 
 
 def customer_create(request):
