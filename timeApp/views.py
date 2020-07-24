@@ -81,6 +81,7 @@ def customer_detail(request, customer_id):
     return render(request, 'customer_detail.html', context=context)
 
 def customer_update(request, customers_id):
+    customers = Customer.objects.get(pk=customers_id)
 
     conn_user = request.user
     conn_profile = Profile.objects.get(user=conn_user)
@@ -90,7 +91,15 @@ def customer_update(request, customers_id):
         'nick' : conn_profile.nick,
     }
 
-    return render(request, 'customer_update.html', context=context)
+    if request.method == "POST":
+        customers.c_title = request.POST['title']
+        customers.c_body = request.POST['body']
+        customers.c_input_date = timezone.datetime.now()
+        customers.save()
+        return redirect('/timeApp/customer_detail/' + str(customers.id), context=context)
+
+    else :
+        return render(request, 'customer_update.html', context=context)
 
 def customer_create(request):
 
