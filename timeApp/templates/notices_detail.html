@@ -6,7 +6,6 @@
 
 <div id="content-wrapper" style="background-color: #f6f6f6;" class="d-flex justify-content-center">
   <div class="cantrion" style="margin-top: 10%; width: 90%;">
-    {{ notices.id }}
     <h1 class="card-title pricing-card-title">{{ notices.n_title }} <small
         class="text-muted">{{ notices.n_input_date }}</small></h1>
 
@@ -14,8 +13,6 @@
 
     <div class="d-flex justify-content-end">
       <a href="{% url 'notices' %}" class="btn btn-primary">돌아가기</a>
-      <!-- <a href="{% url 'customer_update' customers.id %}" class="btn btn-primary">수정하기</a>
-      <a href="{% url 'customer_delete' customers.id %}" class="btn btn-primary">삭제하기</a> -->
     </div>
   </div>
 </div>

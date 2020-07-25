@@ -66,9 +66,9 @@ def notices_create(request):
 
     return render(request, 'notices_create.html', context=context)
 
-def notices_detail(request, notices_id):
+def notices_detail(request, notice_id):
 
-    notices = get_object_or_404(Notices, pk=notices_id)
+    notices = get_object_or_404(Notices, pk=notice_id)
 
     conn_user = request.user
     conn_profile = Profile.objects.get(user=conn_user)

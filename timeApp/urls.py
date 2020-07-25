@@ -9,7 +9,7 @@ urlpatterns = [
     path('notices/', views.notices, name='notices'),
     path('customer/', views.customer, name='customer'),
     path('notices_create/', views.notices_create, name='notices_create'),
-    path('notices_detail/<int:notices_id>', views.notices_detail, name='notices_detail'),
+    path('notices_detail/<int:notice_id>', views.notices_detail, name='notices_detail'),
 
     path('customer_create/', views.customer_create, name='customer_create'),
     path('customer_save/', views.customer_save, name='customer_save'),
