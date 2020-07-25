@@ -31,11 +31,13 @@
                         color: #3e3a39;">
               타임캐쳐,<br>더 나은<br>내일을 위한 선택</h1>
 
+            {% if user.is_authenticated %}
             <img src="{% static 'img/tc-bt-start-big.png' %}" style="width: 20%;" type="button" id="startbtn">
+            {% else %}
+            <a type="button" class="btn btn-light" href="{% url 'signin' %}">로그인하기</a>
+            {% endif %}
 
-            <button type="button" class="btn btn-light" id="pausebtn">
-              일시정지
-            </button>
+            <button type="button" class="btn btn-light" id="pausebtn">일작정지</button>
             <img src="{% static 'img/tc-bt-stop-big.png' %}" style="width: 20%;" type="button" id="stopbtn">
 
           </div>
@@ -217,6 +219,7 @@
             location.replace("{% url 'index' %}");
           },
           error: function (request, status, error) {
+            console.log(time);
             console.log('실패');
             console.log(request);
             console.log(error);
