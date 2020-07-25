@@ -3,7 +3,22 @@
 {% block content_side %}
 <div id="content-wrapper" style="background-color: #f6f6f6;" class="d-flex justify-content-center">
   <div class="cantrion" style="margin-top: 10%; width: 50%;">
-    <h1>notice_create</h1>
+    <h1>notices_create</h1>
+    <br>
+    <div class="container">
+      <form action="{% url 'notices_save' %}" method="POST">
+        {% csrf_token %}
+        <h4>제목: </h4>
+        <input type="text" name="title">
+        <br>
+        <br>
+        <h4>본문: </h4>
+        <textarea cols=40 rows=10 name="body"></textarea>
+        <br>
+        <br>
+        <input class="btn btn-dark" type="submit" value="글쓰기">
+      </form>
+    </div>
   </div>
 </div>
 {% endblock %}

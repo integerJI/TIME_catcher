@@ -66,6 +66,27 @@ def notices_create(request):
 
     return render(request, 'notices_create.html', context=context)
 
+
+def notices_save(request):
+
+    notices = Notices()
+    conn_user = request.user
+    conn_profile = Profile.objects.get(user=conn_user)
+
+    context = {
+        'id' : conn_user.username,
+        'nick' : conn_profile.nick,
+    }
+
+    notices.n_title = request.POST['title']
+    notices.n_body = request.POST['body']
+    notices.n_input_date = timezone.datetime.now()
+    notices.save()
+    
+    return redirect('/timeApp/notices_detail/' + str(notices.id), context=context)
+
+
+
 def notices_detail(request, notice_id):
 
     notices = get_object_or_404(Notices, pk=notice_id)
