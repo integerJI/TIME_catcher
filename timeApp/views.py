@@ -103,6 +103,26 @@ def notices_detail(request, notice_id):
     return render(request, 'notices_detail.html', context=context)
 
 
+def notices_update(request, notice_id):
+    notices = Notices.objects.get(pk=notice_id)
+
+    conn_user = request.user
+    conn_profile = Profile.objects.get(user=conn_user)
+
+    context = {
+        'id' : conn_user.username,
+        'nick' : conn_profile.nick,
+    }
+
+    if request.method == "POST":
+        notices.n_title = request.POST['title']
+        notices.n_body = request.POST['body']
+        notices.n_input_date = timezone.datetime.now()
+        notices.save()
+        return redirect('/timeApp/notices_detail/' + str(notices.id), context=context)
+
+    else :
+        return render(request, 'notices_update.html', context=context)
 
 
 # 건의사항 소스 시작
