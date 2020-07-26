@@ -124,6 +124,11 @@ def notices_update(request, notice_id):
     else :
         return render(request, 'notices_update.html', context=context)
 
+def notices_delete(request, notice_id):
+    notices = Notices.objects.get(pk=notice_id)
+    notices.delete()
+    return redirect('/timeApp/notices/')
+
 
 # 건의사항 소스 시작
 def customer(request):
@@ -213,5 +218,3 @@ def customer_delete(request, customers_id):
     customers = Customer.objects.get(pk=customers_id)
     customers.delete()
     return redirect('/timeApp/customer/')
-
-

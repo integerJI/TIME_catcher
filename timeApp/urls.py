@@ -14,6 +14,7 @@ urlpatterns = [
     path('notices_create/', views.notices_create, name='notices_create'),
     path('notices_save/', views.notices_save, name='notices_save'),
     path('notices_update/<int:notice_id>', views.notices_update, name='notices_update'),
+    path('notices_delete/<int:notice_id>', views.notices_delete, name='notices_delete'),
 
     path('customer_create/', views.customer_create, name='customer_create'),
     path('customer_save/', views.customer_save, name='customer_save'),
