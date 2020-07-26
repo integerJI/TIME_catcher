@@ -34,6 +34,25 @@
 
       </tbody>
     </table>
+
+
+      {%if customers_posts.has_previous%}
+      <a href="?page=1">First</a>
+      <a href="?page={{customers_posts.previous_page_number}}">Previous</a>
+      {%endif%}
+
+      <span>{{customers_posts.number}}</span>
+      <span>of</span>
+      <span>{{customers_posts.paginator.num_pages}}</span>
+
+      {%if customers_posts.has_next%}
+      <a href="?page={{customers_posts.next_page_number}}">Next</a>
+      <a href="?page={{customers_posts.paginator.num_pages}}">Last</a>
+      {%endif%}
+
+
+
+
     <div class="d-flex justify-content-end">
 
       <a href="{% url 'customer_create' %}" class="btn btn-primary">글쓰기</a>

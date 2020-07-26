@@ -139,6 +139,11 @@ def customer(request):
     
     customers = Customer.objects.all().order_by('-id')
 
+    paginator = Paginator(customers,10)
+    page = request.GET.get('page')
+    customers_posts = paginator.get_page(page)
+
+
     conn_user = request.user
     conn_profile = Profile.objects.get(user=conn_user)
 
@@ -146,6 +151,7 @@ def customer(request):
         'id' : conn_user.username,
         'nick' : conn_profile.nick,
         'customers' : customers,
+        'customers_posts' : customers_posts,
     }
 
     return render(request, 'customer.html', context=context)
