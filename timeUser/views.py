@@ -32,7 +32,6 @@ def signup(request):
         else:
             changeDay = request.POST['day']
 
-        print(request.POST['year']+'-'+changeMonth+'-'+changeDay)
         changeBirth = request.POST['year']+'-'+changeMonth+'-'+changeDay
 
         if request.POST['user-password1'] == request.POST['user-password2']:
@@ -122,12 +121,25 @@ class ProfileUpdateView(View):
             'profile': profile,
             'id' : conn_user.username,
             'nick' : conn_profile.nick,
+            'birth_date' : profile.birth_date,
         }
 
         return render(request, 'profile_update.html', context=context)
 
     def post(self, request):
         u = User.objects.get(id=request.user.pk)       
+
+        if len(request.POST['month']) < 2:
+            changeMonth = request.POST['month'].zfill(2)
+        else:
+            changeMonth=request.POST['month']
+
+        if len(request.POST['day']) < 2:
+            changeDay = request.POST['day'].zfill(2)
+        else:
+            changeDay = request.POST['day']
+
+        changeBirth = request.POST['year']+'-'+changeMonth+'-'+changeDay
 
         if hasattr(u, 'profile'):
             profile = u.profile
@@ -137,8 +149,11 @@ class ProfileUpdateView(View):
 
         # Profile 폼
         if profile_form.is_valid():
-            profile = profile_form.save(commit=False) 
+            profile = profile_form.save(commit=False)
+            u.password = request.POST['user-password1']
             profile.user = u
+            profile.nick = request.POST['profile-nick']
+            profile.birth_date = changeBirth
             profile.save()
                     
             context = {

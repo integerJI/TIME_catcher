@@ -3,128 +3,150 @@
 {% block content_side %}
 
 <style>
-
-@media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
     }
+  }
 
-    .hr-sect {
-      display: flex;
-      flex-basis: 100%;
-      align-items: center;
-      color: rgba(0, 0, 0, 0.35);
-      font-size: 20px;
-      margin: 8px 0px;
-    }
+  .hr-sect {
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.35);
+    font-size: 20px;
+    margin: 8px 0px;
+  }
 
-    .hr-sect::before,
-    .hr-sect::after {
-      content: "";
-      flex-grow: 1;
-      background: rgba(0, 0, 0, 0.35);
-      height: 1px;
-      font-size: 0px;
-      line-height: 0px;
-      margin: 0px 16px;
-    }
+  .hr-sect::before,
+  .hr-sect::after {
+    content: "";
+    flex-grow: 1;
+    background: rgba(0, 0, 0, 0.35);
+    height: 1px;
+    font-size: 0px;
+    line-height: 0px;
+    margin: 0px 16px;
+  }
 </style>
 
 <div id="content-wrapper" style="background-color: #f6f6f6;">
   <div class="cantrion" style="margin-top: 10%; width: 90%;">
     <div class="row justify-content-center">
-            <div>
-
-                <form method="POST" class="post-form" enctype="multipart/form-data" action="">
-                    {%csrf_token%}
-
-
-                    <div class="hr-sect">Profile_update</div>
-                
-
-                    <br>
-                    <div class="form-group">
-                      <label for="formGroupExampleInput">이메일</label>
-                      <input type="email" name="user-username" class="form-control" maxlength="50" id="id_user-username" disabled>
-                    </div>
-                    <div class="form-group">
-                      <label for="formGroupExampleInput">비밀번호</label>
-                      <input type="password" name="user-password1" class="form-control" required id="id_user-password1">
-                    </div>
-                    <div class="form-group">
-                      <label for="formGroupExampleInput">비밀번호 확인</label>
-                      <input type="password" name="user-password2" class="form-control" required id="id_user-password2">
-                    </div>
-                    <div class="form-group">
-                      <label for="formGroupExampleInput">이름</label>
-                      <input type="text" name="profile-nick" class="form-control" autofocus required id="id_profile-nick">
-                    </div>
-                
-                    <div class="row">
-                      <div class="col-md-4 mb-3">
-                        <label for="country">년도</label>
-                        <select class="custom-select d-block w-100" name="year" id="year" title="년도" required>
-                        </select>
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <label for="state">월</label>
-                        <select class="custom-select d-block w-100" name="month" id="month" title="월" required>
-                        </select>
-                      </div>
-                      <div class="col-md-4 mb-3">
-                        <label for="zip">일</label>
-                        <select class="custom-select d-block w-100" name="day" id="day" title="일" required>
-                        </select>
-                      </div>
-                    </div>
-                    <br>  
-                    <button class="btn btn-lg btn-info btn-block" type="submit">Update Profile</button>
-                    <hr>                  
-                </form>
+      <div>
+        <form method="POST" class="post-form" enctype="multipart/form-data" action="">
+          {%csrf_token%}
+          <div class="hr-sect">Profile_update</div>
+          <br>
+          <div class="form-group">
+            <label for="formGroupExampleInput">이메일</label>
+            <input type="email" name="user-username" class="form-control" maxlength="50" id="id_user-username" disabled>
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput">비밀번호</label>
+            <input type="password" name="user-password1" class="form-control" required id="id_user-password1">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput">비밀번호 확인</label>
+            <input type="password" name="user-password2" class="form-control" required id="id_user-password2">
+          </div>
+          <div class="form-group">
+            <label for="formGroupExampleInput">이름</label>
+            <input type="text" name="profile-nick" class="form-control" autofocus required id="id_profile-nick">
+          </div>
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label for="country">년도</label>
+              <select class="custom-select d-block w-100" name="year" id="year" title="년도" required>
+              </select>
             </div>
-        </div>
+            <div class="col-md-4 mb-3">
+              <label for="state">월</label>
+              <select class="custom-select d-block w-100" name="month" id="month" title="월" required>
+              </select>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="zip">일</label>
+              <select class="custom-select d-block w-100" name="day" id="day" title="일" required>
+              </select>
+            </div>
+          </div>
+          <br>
+          <button class="btn btn-lg btn-info btn-block" type="submit">Update Profile</button>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
 
 
 <script>
 
-    $(document).ready(function () {
-      setDateBox();
-    });
-  
-    // select box 연도 , 월 표시
-    function setDateBox() {
-      var dt = new Date();
-      var year = "";
-      var com_year = dt.getFullYear();
-  
-      // 발행 뿌려주기
-      $("#year").append("<option value=''>년도</option>");
-  
-      // 올해 기준으로 -50년부터 +1년을 보여준다.
-      for (var y = (com_year - 50); y <= (com_year + 1); y++) {
-        $("#year").append("<option value='" + y + "'>" + y + " 년" + "</option>");
-      }
-  
-      // 월 뿌려주기(1월부터 12월)
-      var month;
-      $("#month").append("<option value=''>월</option>");
-      for (var i = 1; i <= 12; i++) {
-        $("#month").append("<option value='" + i + "'>" + i + " 월" + "</option>");
-      }
-  
-      // 일 뿌려주기(1일부터 31일)
-      var day;
-      $("#day").append("<option value=''>일</option>");
-      for (var i = 1; i <= 31; i++) {
-        $("#day").append("<option value='" + i + "'>" + i + " 일" + "</option>");
-      }
-  
+  $('#id_user-username').val('{{id}}').text;
+  $('#id_profile-nick').val('{{nick}}').text;
+
+  var changeBirth = '{{birth_date}}';
+
+  $(document).ready(function () {
+    setDateBox();
+  });
+
+  // select box 연도 , 월 표시
+  function setDateBox() {
+    var dt = new Date();
+    var year = "";
+    var com_year = dt.getFullYear();
+
+    // 발행 뿌려주기
+    $("#year").append("<option value=''>년도</option>");
+
+    if (changeBirth != null){
+      var y = changeBirth.substring(0,4);
+      $("#year").append("<option value='" + y + "' selected>" + y + " 년" + "</option>");
+    } else {
+      console.log('year read fail');
     }
-  
-  </script>
-  
+
+    // 올해 기준으로 -50년부터 +1년을 보여준다.
+    for (var y = (com_year - 50); y <= (com_year + 1); y++) {
+      $("#year").append("<option value='" + y + "'>" + y + " 년" + "</option>");
+    }  
+
+    // var y = changeBirth.substring(0,4);
+
+    // 월 뿌려주기(1월부터 12월)
+
+    if (changeBirth != null){
+      var m = changeBirth.substring(6,7);
+      $("#month").append("<option value='" + m + "' selected>" + m + " 월" + "</option>");
+    } else {
+      console.log('year read fail');
+    }
+
+    var month;
+    $("#month").append("<option value=''>월</option>");
+    for (var i = 1; i <= 12; i++) {
+      $("#month").append("<option value='" + i + "'>" + i + " 월" + "</option>");
+    }
+
+    // 일 뿌려주기(1일부터 31일)
+
+    if (changeBirth != null){
+      var d = changeBirth.substring(9,10);
+      $("#day").append("<option value='" + d + "' selected>" + d + " 일" + "</option>");
+    } else {
+      console.log('year read fail');
+    }
+
+    var day;
+    $("#day").append("<option value=''>일</option>");
+    for (var i = 1; i <= 31; i++) {
+      $("#day").append("<option value='" + i + "'>" + i + " 일" + "</option>");
+    }
+
+  }
+
+</script>
+
 
 {% endblock %}
