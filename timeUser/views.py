@@ -21,12 +21,28 @@ def signup(request):
     form = UserCreationMultiForm(request.POST, request.FILES)
     if request.method == 'POST':
         userCheck = request.POST['user-username']
+
+        if len(request.POST['month']) < 2:
+            changeMonth = request.POST['month'].zfill(2)
+        else:
+            changeMonth=request.POST['month']
+
+        if len(request.POST['day']) < 2:
+            changeDay = request.POST['day'].zfill(2)
+        else:
+            changeDay = request.POST['day']
+
+        print(request.POST['year']+'-'+changeMonth+'-'+changeDay)
+        changeBirth = request.POST['year']+'-'+changeMonth+'-'+changeDay
+
         if request.POST['user-password1'] == request.POST['user-password2']:
             if form.is_valid(): 
                 user = form['user'].save()
                 profile = form['profile'].save(commit=False)
                 profile.user = user
+                profile.birth_date = changeBirth
                 profile.save()
+                print('회원가입 성공')
                 return redirect('signin')
             else:
                 if User.objects.get(username=userCheck):
@@ -37,6 +53,7 @@ def signup(request):
                 messages.info(request, '회원가입에 실패했습니다.')
                 return render(request, 'signup.html')
         else:
+            print('비밀번호가 달라서 실패')
             messages.info(request, '비밀번호가 다릅니다.')
             return render(request, 'signup.html')
 
