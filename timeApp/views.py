@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.core.paginator import Paginator
 from .models import Timesave, Notices, Customer
 try:
     from django.utils import simplejson as json
@@ -41,6 +42,10 @@ def notices(request):
     
     notices = Notices.objects.all().order_by('-id')
 
+    paginator = Paginator(notices,10)
+    page = request.GET.get('page')
+    notices_posts = paginator.get_page(page)
+
     conn_user = request.user
     conn_profile = Profile.objects.get(user=conn_user)
 
@@ -48,11 +53,10 @@ def notices(request):
         'id' : conn_user.username,
         'nick' : conn_profile.nick,
         'notices' : notices,
+        'notices_posts' : notices_posts,
     }
 
     return render(request, 'notices.html', context=context)
-
-
 
 def notices_create(request):
 

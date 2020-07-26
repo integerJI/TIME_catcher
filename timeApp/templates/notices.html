@@ -34,6 +34,23 @@
 
       </tbody>
     </table>
+    
+      {%if notices_posts.has_previous%}
+      <a href="?page=1">First</a>
+      <a href="?page={{notices_posts.previous_page_number}}">Previous</a>
+      {%endif%}
+
+      <span>{{notices_posts.number}}</span>
+      <span>of</span>
+      <span>{{notices_posts.paginator.num_pages}}</span>
+
+      {%if notices_posts.has_next%}
+      <a href="?page={{notices_posts.next_page_number}}">Next</a>
+      <a href="?page={{notices_posts.paginator.num_pages}}">Last</a>
+      {%endif%}
+
+
+
     <div class="d-flex justify-content-end">
 
       <a href="{% url 'notices_create' %}" class="btn btn-primary">글쓰기</a>
