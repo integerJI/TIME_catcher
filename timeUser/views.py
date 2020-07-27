@@ -77,21 +77,29 @@ signout = LogoutViews.as_view()
 @login_required
 def userinfo(request):
 
-    today = DateFormat(datetime.now()).format('Ymd')
+    today = DateFormat(datetime.now()).format('YmdHs')
 
     conn_user = request.user
     conn_profile = Profile.objects.get(user=conn_user)
 
     timesave = Timesave.objects.all()
     sum = Timesave.objects.all().aggregate(Sum('save_date'))
-    aaa = Timesave.objects.all()
-
+    
     values = sum.values()
+
+    aaa = Timesave.objects.all()
 
     print(today)
     for a in aaa:
-        b = DateFormat(a.input_date).format('Ymd')
-        print(b)
+        b = DateFormat(a.input_date).format('YmdHs')
+        if b == today :
+            print('성공')
+            break
+        else :
+            print('실패')
+            continue
+        
+
 
     for i in values:
         continue
