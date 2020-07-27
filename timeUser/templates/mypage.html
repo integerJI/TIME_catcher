@@ -8,8 +8,26 @@
   </div> -->
 
   <div class="chart-container" style="position: relative; height:40vh; width:30vw">
-    
     <canvas id="myPieChart"></canvas>
+    <br>
+    <table class="table">
+      <thead>
+        <colgroup>
+          <col style="width: 50%;">
+          <col style="width: 50%;">
+        </colgroup>
+        <tr class="text-center">
+          <th scope="col">목표 시간</th>
+          <th scope="col">현재 시간</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="text-center">
+          <td id="planScore"></td>
+          <td id="sumScore"></td>
+        </tr>
+      </tbody>
+    </table>
 
   </div>
 </div>
@@ -18,6 +36,9 @@
 
   var sum = Number("{{sum}}");
   var plan = (Number("{{plan}}") * 60) * 60 ;
+
+  $("#planScore").text(plan);
+  $("#sumScore").text(sum);
 
   // Pie Chart Example
   var ctx = document.getElementById("myPieChart");
