@@ -96,6 +96,7 @@ def userinfo(request):
         'nick' : conn_profile.nick,
         'birth_date' : conn_profile.birth_date,
         'timesave' : timesave,
+        'plan' : conn_profile.plan,
         'sum' : i,
     }
 
