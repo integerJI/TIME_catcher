@@ -118,6 +118,7 @@ class ProfileUpdateView(View):
             profile_form = ProfileUpdateForm(initial={
                 'nick': profile.nick,
                 'birth_date' : profile.birth_date,
+                'plan' : profile.plan,
             })
         else:
             profile_form = ProfileUpdateForm()
@@ -128,6 +129,7 @@ class ProfileUpdateView(View):
             'id' : conn_user.username,
             'nick' : conn_profile.nick,
             'birth_date' : profile.birth_date,
+            'plan' : profile.plan,
         }
 
         return render(request, 'profile_update.html', context=context)
@@ -160,8 +162,9 @@ class ProfileUpdateView(View):
             profile.user = u
             profile.nick = request.POST['profile-nick']
             profile.birth_date = changeBirth
+            profile.plan = request.POST['profile-plan']
             profile.save()
-                    
+            print('정보 수정 성공')
             context = {
                 'id' : u.username,
                 'nick' : profile.nick,
@@ -171,5 +174,4 @@ class ProfileUpdateView(View):
             return render(request, 'mypage.html', context=context)
         else :
             print('실패')
-            
         return redirect('mypage', pk=request.user.pk) 

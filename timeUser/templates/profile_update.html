@@ -71,6 +71,14 @@
               </select>
             </div>
           </div>
+
+
+          <div class="form-group">
+            <label for="formGroupExampleInput">목표시간</label>
+            <input type="text" name="profile-plan" class="form-control" autofocus required id="id_profile-plan" numberOnly placeholder="시간">
+          </div>
+      
+
           <br>
           <button class="btn btn-lg btn-info btn-block" type="submit">Update Profile</button>
         </form>
@@ -82,8 +90,13 @@
 
 <script>
 
+  $("input:text[numberOnly]").on("keyup", function() {
+    $(this).val($(this).val().replace(/[^0-9]/g,""));
+  });
+
   $('#id_user-username').val('{{id}}').text;
   $('#id_profile-nick').val('{{nick}}').text;
+  $('#id_profile-plan').val('{{plan}}').text;
 
   var changeBirth = '{{birth_date}}';
 
