@@ -98,7 +98,6 @@
       <label for="formGroupExampleInput">이름</label>
       <input type="text" name="profile-nick" class="form-control" autofocus required id="id_profile-nick">
     </div>
-
     <div class="row">
       <div class="col-md-4 mb-3">
         <label for="country">년도</label>
@@ -116,12 +115,22 @@
         </select>
       </div>
     </div>
+
+    <div class="form-group">
+      <label for="formGroupExampleInput">목표시간</label>
+      <input type="text" name="profile-plan" class="form-control" autofocus required id="id_profile-plan" numberOnly placeholder="시간">
+    </div>
+
     <br>
     <button class="btn btn-lg btn-info btn-block" type="submit">Sign Up</button>
   </form>
 </body>
 
 <script>
+
+  $("input:text[numberOnly]").on("keyup", function() {
+      $(this).val($(this).val().replace(/[^0-9]/g,""));
+  });
 
   $(document).ready(function () {
     setDateBox();

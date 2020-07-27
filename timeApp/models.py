@@ -11,6 +11,8 @@ class Timesave(models.Model):
     def __str__(self):
         return '%s - %s' % (self.save_user, self.save_date) 
 
+    
+
 class Notices(models.Model):
     objects = models.Manager()
     n_title = models.CharField(max_length=100)

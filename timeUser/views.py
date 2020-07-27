@@ -40,6 +40,7 @@ def signup(request):
                 profile = form['profile'].save(commit=False)
                 profile.user = user
                 profile.birth_date = changeBirth
+                profile.plan = request.POST['profile-plan']
                 profile.save()
                 print('회원가입 성공')
                 return redirect('signin')
@@ -89,15 +90,8 @@ def userinfo(request):
 
     aaa = Timesave.objects.all()
 
-    print(today)
     for a in aaa:
-        b = DateFormat(a.input_date).format('Ymd')
-        if b == today :
-            print('성공')
-        else :
-            print('실패')
-        
-
+        print(a.input_date)
 
     for i in values:
         continue
