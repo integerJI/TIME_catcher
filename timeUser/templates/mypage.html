@@ -35,7 +35,14 @@
 <script>
 
   var sum = Number("{{sum}}");
-  var plan = (Number("{{plan}}") * 60) * 60 ;
+  var plan = Number("{{plan}}") * 60;
+  var stat = plan-sum;
+  
+  if (stat < 0) {
+    var stat = 0
+  } else {
+    var stat = plan-sum;
+  }
 
   $("#planScore").text(plan);
   $("#sumScore").text(sum);
@@ -47,7 +54,7 @@
     data: {
       labels: ["모은 시간", "목표 시간"],
       datasets: [{
-        data: [sum, plan],
+        data: [stat, plan],
         backgroundColor: ['#1cc88a', '#4e73df'],
         hoverBackgroundColor: ['#17a673', '#2e59d9'],
         hoverBorderColor: "rgba(234, 236, 244, 1)",
