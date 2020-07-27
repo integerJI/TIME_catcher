@@ -84,10 +84,13 @@ def userinfo(request):
 
     timesave = Timesave.objects.all()
     sum = Timesave.objects.all().aggregate(Sum('save_date'))
+    aaa = Timesave.objects.all()
 
     values = sum.values()
 
     print(today)
+    for a in aaa:
+        print(a.input_date)
 
     for i in values:
         continue
