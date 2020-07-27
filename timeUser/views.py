@@ -77,7 +77,7 @@ signout = LogoutViews.as_view()
 @login_required
 def userinfo(request):
 
-    today = DateFormat(datetime.now()).format('YmdHs')
+    today = DateFormat(datetime.now()).format('Ymd')
 
     conn_user = request.user
     conn_profile = Profile.objects.get(user=conn_user)
@@ -91,13 +91,11 @@ def userinfo(request):
 
     print(today)
     for a in aaa:
-        b = DateFormat(a.input_date).format('YmdHs')
+        b = DateFormat(a.input_date).format('Ymd')
         if b == today :
             print('성공')
-            break
         else :
             print('실패')
-            continue
         
 
 
