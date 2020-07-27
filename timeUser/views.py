@@ -78,7 +78,6 @@ signout = LogoutViews.as_view()
 def userinfo(request):
 
     today = DateFormat(datetime.now()).format('Ymd')
-    print(today)
 
     conn_user = request.user
     conn_profile = Profile.objects.get(user=conn_user)
@@ -87,6 +86,8 @@ def userinfo(request):
     sum = Timesave.objects.all().aggregate(Sum('save_date'))
 
     values = sum.values()
+
+    print(today)
 
     for i in values:
         continue
