@@ -90,7 +90,8 @@ def userinfo(request):
 
     print(today)
     for a in aaa:
-        print(a.input_date)
+        b = DateFormat(a.input_date).format('Ymd')
+        print(b)
 
     for i in values:
         continue
