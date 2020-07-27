@@ -88,11 +88,6 @@ def userinfo(request):
     
     values = sum.values()
 
-    aaa = Timesave.objects.all()
-
-    for a in aaa:
-        print(a.input_date)
-
     for i in values:
         continue
 
@@ -110,8 +105,6 @@ def userinfo(request):
 class ProfileUpdateView(View): 
     def get(self, request):
         user = get_object_or_404(User, pk=request.user.pk) 
-        conn_user = request.user
-        conn_profile = Profile.objects.get(user=conn_user)
 
         if hasattr(user, 'profile'):  
             profile = user.profile
@@ -136,6 +129,17 @@ class ProfileUpdateView(View):
 
     def post(self, request):
         u = User.objects.get(id=request.user.pk)       
+
+        conn_user = request.user
+        conn_profile = Profile.objects.get(user=conn_user)
+
+        timesave = Timesave.objects.all()
+        sum = Timesave.objects.all().aggregate(Sum('save_date'))
+        
+        values = sum.values()
+
+        for i in values:
+            continue
 
         if len(request.POST['month']) < 2:
             changeMonth = request.POST['month'].zfill(2)
@@ -169,6 +173,9 @@ class ProfileUpdateView(View):
                 'id' : u.username,
                 'nick' : profile.nick,
                 'birth_date' : profile.birth_date,
+                'timesave' : timesave,
+                'plan' : conn_profile.plan,
+                'sum' : i,                
             }
 
             return render(request, 'mypage.html', context=context)
