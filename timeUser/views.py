@@ -106,6 +106,9 @@ class ProfileUpdateView(View):
     def get(self, request):
         user = get_object_or_404(User, pk=request.user.pk) 
 
+        conn_user = request.user
+        conn_profile = Profile.objects.get(user=conn_user)
+
         if hasattr(user, 'profile'):  
             profile = user.profile
             profile_form = ProfileUpdateForm(initial={
