@@ -3,59 +3,56 @@
 {% block content_side %}
 <div id="content-wrapper" style="background-color: #f6f6f6;" class="d-flex justify-content-center">
   <div class="cantrion" style="margin-top: 10%; width: 90%;">
-    <h1>나문의 / 건대하기</h1>
-
-    <table class="table">
+    <h3 class="mb-0">공지사항</h3>
+    <div class="mb-1 text-muted">타임캡쳐의 주요사항을 알려드려요.</div>
+    <br>
+    <table class="table table-hover">
       <thead>
-
         <colgroup>
-          <col style="width: 5%;">
-          <col style="width: 20%;">
-          <col style="width: 5%;">
-          <col style="width: 10%;">
+          <col style="width: 15%;">
+          <col style="width: 40%;">
+          <col style="width: 15%;">
+          <col style="width: 15%;">
+          <col style="width: 15%;">
         </colgroup>
-
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">TITLE</th>
-          <th scope="col">HIT</th>
-          <th scope="col">DATE</th>
+        <tr class="text-center table-dark">
+          <th scope="col">번호</th>
+          <th scope="col">제목</th>
+          <th scope="col">작성자</th>
+          <th scope="col">작성날짜</th>
+          <th scope="col">조회수</th>
         </tr>
       </thead>
       <tbody>
-        {% for customer in customers.all %}
+        {% for customer in customers_posts %}
         <tr>
           <th scope="row">{{ customer.id }}</th>
           <td><a href="{% url 'customer_detail' customer.id %}">{{ customer.c_title }}</a></td>
+          <td>{{ customer.c_user }}</td>
+          <td>{{ customer.c_input_date  | date:"Y.m.d h:i" }}</td>
           <td>{{ customer.c_hit }}</td>
-          <td>{{ customer.c_input_date }}</td>
         </tr>
         {% endfor %}
-
       </tbody>
     </table>
-
-
-      {%if customers_posts.has_previous%}
-      <a href="?page=1">First</a>
-      <a href="?page={{customers_posts.previous_page_number}}">Previous</a>
-      {%endif%}
-
-      <span>{{customers_posts.number}}</span>
-      <span>of</span>
-      <span>{{customers_posts.paginator.num_pages}}</span>
-
-      {%if customers_posts.has_next%}
-      <a href="?page={{customers_posts.next_page_number}}">Next</a>
-      <a href="?page={{customers_posts.paginator.num_pages}}">Last</a>
-      {%endif%}
-
-
-
-
+    <br>
+    <div class="d-flex justify-content-center">
+    {%if customers_posts.has_previous%}
+    <a href="?page=1">First&nbsp</a>
+    <a href="?page={{customers_posts.previous_page_number}}">Previous</a>
+    {%endif%}
+    &nbsp
+    <span>{{customers_posts.number}}</span>
+    <span>&nbsp of &nbsp</span>
+    <span>{{customers_posts.paginator.num_pages}}</span>
+    &nbsp
+    {%if customers_posts.has_next%}
+    <a href="?page={{customers_posts.next_page_number}}">Next&nbsp</a>
+    <a href="?page={{customers_posts.paginator.num_pages}}">Last</a>
+    {%endif%}
+    </div>
     <div class="d-flex justify-content-end">
-
-      <a href="{% url 'customer_create' %}" class="btn btn-primary">글쓰기</a>
+      <a href="{% url 'customer_create' %}" class="btn btn-info">글쓰기</a>
     </div>
   </div>
 </div>
