@@ -52,9 +52,9 @@
   var myPieChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
-      labels: ["모은 시간", "목표 시간"],
+      labels: ["모은 시간", "목표 까지 남은 시간"],
       datasets: [{
-        data: [stat, plan],
+        data: [sum, stat],
         backgroundColor: ['#1cc88a', '#4e73df'],
         hoverBackgroundColor: ['#17a673', '#2e59d9'],
         hoverBorderColor: "rgba(234, 236, 244, 1)",
