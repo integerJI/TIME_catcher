@@ -2,23 +2,49 @@
 {% load static %}
 {% block content_side %}
 <div id="content-wrapper" style="background-color: #f6f6f6;" class="d-flex justify-content-center">
-  <div class="cantrion" style="margin-top: 10%; width: 50%;">
-    <h1>notices_create</h1>
+  <div class="cantrion" style="margin-top: 10%; width: 90%;">
+    <h3 class="mb-0">공지사항</h3>
+    <div class="mb-1 text-muted">타임캡쳐의 주요사항을 알려드려요.</div>
     <br>
-    <div class="container">
-      <form action="{% url 'notices_save' %}" method="POST">
-        {% csrf_token %}
-        <h4>제목: </h4>
-        <input type="text" name="title">
-        <br>
-        <br>
-        <h4>본문: </h4>
-        <textarea cols=40 rows=10 name="body"></textarea>
-        <br>
-        <br>
-        <input class="btn btn-dark" type="submit" value="글쓰기">
-      </form>
-    </div>
+    <form action="{% url 'notices_save' %}" method="POST">
+      {% csrf_token %}
+
+      <div class="row mb-2">
+        <div class="col-md-6">
+          <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+              <a>제목: </a>
+            </div>
+            <div class="col p-4 d-flex flex-column position-static">
+              <input type="text" name="title" class="form-control">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <br>
+
+
+      <div class="row mb-2">
+        <div class="col-md-6">
+          <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+              <a>본문: </a>
+            </div>
+            <div class="col p-4 d-flex flex-column position-static">
+              <textarea cols=40 rows=10 name="body" class="form-control"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <br>
+      <div class="d-flex justify-content-end">
+        <input class="btn btn-info" type="submit" value="글쓰기">
+      </div>
+    </form>
   </div>
 </div>
 {% endblock %}
