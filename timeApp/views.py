@@ -82,6 +82,7 @@ def notices_save(request):
         'nick' : conn_profile.nick,
     }
 
+    notices.n_user = User.objects.get(username = request.user.get_username())
     notices.n_title = request.POST['title']
     notices.n_body = request.POST['body']
     notices.n_input_date = timezone.datetime.now()
@@ -119,6 +120,7 @@ def notices_update(request, notice_id):
     }
 
     if request.method == "POST":
+        notices.n_user = User.objects.get(username = request.user.get_username())
         notices.n_title = request.POST['title']
         notices.n_body = request.POST['body']
         notices.n_input_date = timezone.datetime.now()
@@ -194,6 +196,8 @@ def customer_save(request):
         'nick' : conn_profile.nick,
     }
 
+    customer.c_user = User.objects.get(username = request.user.get_username())
+    customer.c_title = request.POST['title']
     customer.c_title = request.POST['title']
     customer.c_body = request.POST['body']
     customer.c_input_date = timezone.datetime.now()
@@ -215,6 +219,7 @@ def customer_update(request, customers_id):
     }
 
     if request.method == "POST":
+        customer.c_user = User.objects.get(username = request.user.get_username())
         customers.c_title = request.POST['title']
         customers.c_body = request.POST['body']
         customers.c_input_date = timezone.datetime.now()

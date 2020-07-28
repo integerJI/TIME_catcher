@@ -15,6 +15,7 @@ class Timesave(models.Model):
 
 class Notices(models.Model):
     objects = models.Manager()
+    n_user = models.ForeignKey(User, on_delete = models.CASCADE, null = True)
     n_title = models.CharField(max_length=100)
     n_body = models.TextField()
     n_hit = models.PositiveIntegerField(default=0)
@@ -31,6 +32,7 @@ class Notices(models.Model):
 
 class Customer(models.Model):
     objects = models.Manager()
+    c_user = models.ForeignKey(User, on_delete = models.CASCADE, null = True)
     c_title = models.CharField(max_length=100)
     c_body = models.TextField()
     c_hit = models.PositiveIntegerField(default=0)
