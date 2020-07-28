@@ -1,7 +1,6 @@
 {% extends 'base_side.html' %}
 {% load static %}
 {% block content_side %}
-
 <style>
   @media (min-width: 768px) {
     .bd-placeholder-img-lg {
@@ -71,14 +70,11 @@
               </select>
             </div>
           </div>
-
-
           <div class="form-group">
             <label for="formGroupExampleInput">목표시간</label>
-            <input type="text" name="profile-plan" class="form-control" autofocus required id="id_profile-plan" numberOnly placeholder="(분 단위 입력)">
+            <input type="text" name="profile-plan" class="form-control" autofocus required id="id_profile-plan"
+              numberOnly placeholder="(분 단위 입력)">
           </div>
-      
-
           <br>
           <button class="btn btn-lg btn-info btn-block" type="submit">Update Profile</button>
         </form>
@@ -86,12 +82,9 @@
     </div>
   </div>
 </div>
-
-
 <script>
-
-  $("input:text[numberOnly]").on("keyup", function() {
-    $(this).val($(this).val().replace(/[^0-9]/g,""));
+  $("input:text[numberOnly]").on("keyup", function () {
+    $(this).val($(this).val().replace(/[^0-9]/g, ""));
   });
 
   $('#id_user-username').val('{{id}}').text;
@@ -113,53 +106,45 @@
     // 발행 뿌려주기
     $("#year").append("<option value=''>년도</option>");
 
-    if (changeBirth != null){
-      var y = changeBirth.substring(0,4);
+    if (changeBirth != null) {
+      var y = changeBirth.substring(0, 4);
       $("#year").append("<option value='" + y + "' selected>" + y + " 년" + "</option>");
     } else {
       console.log('year read fail');
-    }
+    }// changeBirth end
 
     // 올해 기준으로 -50년부터 +1년을 보여준다.
     for (var y = (com_year - 50); y <= (com_year + 1); y++) {
       $("#year").append("<option value='" + y + "'>" + y + " 년" + "</option>");
-    }  
-
-    // var y = changeBirth.substring(0,4);
+    } // year end
 
     // 월 뿌려주기(1월부터 12월)
-
-    if (changeBirth != null){
-      var m = changeBirth.substring(6,7);
+    if (changeBirth != null) {
+      var m = changeBirth.substring(6, 7);
       $("#month").append("<option value='" + m + "' selected>" + m + " 월" + "</option>");
     } else {
       console.log('year read fail');
-    }
+    } // changeBirth end
 
     var month;
     $("#month").append("<option value=''>월</option>");
     for (var i = 1; i <= 12; i++) {
       $("#month").append("<option value='" + i + "'>" + i + " 월" + "</option>");
-    }
+    } // month end
 
     // 일 뿌려주기(1일부터 31일)
-
-    if (changeBirth != null){
-      var d = changeBirth.substring(9,10);
+    if (changeBirth != null) {
+      var d = changeBirth.substring(9, 10);
       $("#day").append("<option value='" + d + "' selected>" + d + " 일" + "</option>");
     } else {
       console.log('year read fail');
-    }
+    } // changeBirth end
 
     var day;
     $("#day").append("<option value=''>일</option>");
     for (var i = 1; i <= 31; i++) {
       $("#day").append("<option value='" + i + "'>" + i + " 일" + "</option>");
-    }
-
+    } // day end
   }
-
 </script>
-
-
 {% endblock %}

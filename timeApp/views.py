@@ -20,13 +20,10 @@ def index(request):
 @require_POST
 def timesave(request):
     if request.method == 'POST':
-        
         timesave = Timesave()
         timesave.save_user = User.objects.get(username = request.user.get_username())
-        
         timesave.save_date = request.POST.get('time')
         timesave.save()
-
         return HttpResponse(content_type='application/json')
 
 def calender(request):
@@ -35,11 +32,7 @@ def calender(request):
 def mobile(request):
     return render(request, 'mobile.html')
 
-
-
-
 def notices(request):
-    
     notices = Notices.objects.all().order_by('-id')
 
     paginator = Paginator(notices,10)
@@ -59,7 +52,6 @@ def notices(request):
     return render(request, 'notices.html', context=context)
 
 def notices_create(request):
-
     conn_user = request.user
     conn_profile = Profile.objects.get(user=conn_user)
 
@@ -70,10 +62,9 @@ def notices_create(request):
 
     return render(request, 'notices_create.html', context=context)
 
-
 def notices_save(request):
-
     notices = Notices()
+
     conn_user = request.user
     conn_profile = Profile.objects.get(user=conn_user)
 
@@ -90,10 +81,7 @@ def notices_save(request):
     
     return redirect('/timeApp/notices_detail/' + str(notices.id), context=context)
 
-
-
 def notices_detail(request, notice_id):
-
     notices = get_object_or_404(Notices, pk=notice_id)
 
     conn_user = request.user
@@ -106,7 +94,6 @@ def notices_detail(request, notice_id):
     }
 
     return render(request, 'notices_detail.html', context=context)
-
 
 def notices_update(request, notice_id):
     notices = Notices.objects.get(pk=notice_id)
@@ -126,7 +113,6 @@ def notices_update(request, notice_id):
         notices.n_input_date = timezone.datetime.now()
         notices.save()
         return redirect('/timeApp/notices_detail/' + str(notices.id), context=context)
-
     else :
         return render(request, 'notices_update.html', context=context)
 
@@ -135,16 +121,12 @@ def notices_delete(request, notice_id):
     notices.delete()
     return redirect('/timeApp/notices/')
 
-
-# 건의사항 소스 시작
-def customer(request):
-    
+def customer(request):    
     customers = Customer.objects.all().order_by('-id')
 
     paginator = Paginator(customers,10)
     page = request.GET.get('page')
     customers_posts = paginator.get_page(page)
-
 
     conn_user = request.user
     conn_profile = Profile.objects.get(user=conn_user)
@@ -159,7 +141,6 @@ def customer(request):
     return render(request, 'customer.html', context=context)
 
 def customer_detail(request, customer_id):
-
     customers = get_object_or_404(Customer, pk=customer_id)
 
     conn_user = request.user
@@ -174,7 +155,6 @@ def customer_detail(request, customer_id):
     return render(request, 'customer_detail.html', context=context)
 
 def customer_create(request):
-
     conn_user = request.user
     conn_profile = Profile.objects.get(user=conn_user)
 
@@ -186,7 +166,6 @@ def customer_create(request):
     return render(request, 'customer_create.html', context=context)
 
 def customer_save(request):
-
     customer = Customer()
     conn_user = request.user
     conn_profile = Profile.objects.get(user=conn_user)
@@ -204,8 +183,6 @@ def customer_save(request):
     customer.save()
     
     return redirect('/timeApp/customer_detail/' + str(customer.id), context=context)
-
-
 
 def customer_update(request, customers_id):
     customers = Customer.objects.get(pk=customers_id)
@@ -225,7 +202,6 @@ def customer_update(request, customers_id):
         customers.c_input_date = timezone.datetime.now()
         customers.save()
         return redirect('/timeApp/customer_detail/' + str(customers.id), context=context)
-
     else :
         return render(request, 'customer_update.html', context=context)
 

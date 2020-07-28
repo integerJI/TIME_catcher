@@ -1,10 +1,7 @@
-
 {% load static %}
 <!doctype html>
 <html lang="en">
-
 <head>
-
   <!-- CSS only -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -25,12 +22,15 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Jekyll v4.0.1">
-  <title>Signin Template · Bootstrap</title>
+  <title>TIME catcher</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
 
   <!-- Bootstrap core CSS -->
   <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/signin.css' %}" rel="stylesheet">
 
   <style>
     .bd-placeholder-img {
@@ -68,19 +68,13 @@
       margin: 0px 16px;
     }
   </style>
-  <!-- Custom styles for this template -->
-  <link href="{% static 'css/signin.css' %}" rel="stylesheet">
 </head>
 
 <body class="text-start">
-
   <form class="form-signin" method="POST" action="{% url 'signup'%}">
     {%csrf_token%}
-
     <img class="mb-2" src="{% static 'img/tc-logo.png' %}" alt="" width="100%">
-
     <div class="hr-sect">Join us</div>
-
     <br>
     <div class="form-group">
       <label for="formGroupExampleInput">이메일</label>
@@ -115,21 +109,18 @@
         </select>
       </div>
     </div>
-
     <div class="form-group">
       <label for="formGroupExampleInput">목표시간</label>
-      <input type="text" name="profile-plan" class="form-control" autofocus required id="id_profile-plan" numberOnly placeholder="(분 단위 입력)">
+      <input type="text" name="profile-plan" class="form-control" autofocus required id="id_profile-plan" numberOnly
+        placeholder="(분 단위 입력)">
     </div>
-
     <br>
     <button class="btn btn-lg btn-info btn-block" type="submit">Sign Up</button>
   </form>
 </body>
-
 <script>
-
-  $("input:text[numberOnly]").on("keyup", function() {
-      $(this).val($(this).val().replace(/[^0-9]/g,""));
+  $("input:text[numberOnly]").on("keyup", function () {
+    $(this).val($(this).val().replace(/[^0-9]/g, ""));
   });
 
   $(document).ready(function () {
@@ -163,9 +154,6 @@
     for (var i = 1; i <= 31; i++) {
       $("#day").append("<option value='" + i + "'>" + i + " 일" + "</option>");
     }
-
   }
-
 </script>
-
 </html>

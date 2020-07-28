@@ -2,14 +2,12 @@
 {% load static %}
 {% block content %}
 
-<!-- Masthead-->
 <header class="masthead">
   <div class="container h-100">
     <div class="d-flex justify-content-center row h-100">
       <div class="row h-100 w-50 text-start">
         <div class="container d-flex align-items-center justify-content-center">
           <div class="container">
-
             <p class="text-white-75 font-weight-light mb-3" style="font-family: SDGtNeobUni-aUl;
                         font-size: 22px;
                         font-weight: normal;
@@ -30,24 +28,19 @@
                         text-align: left;
                         color: #3e3a39;">
               타임캐쳐,<br>더 나은<br>내일을 위한 선택</h1>
-
             {% if user.is_authenticated %}
             <img src="{% static 'img/tc-bt-start-big.png' %}" style="width: 20%;" type="button" id="startbtn">
             {% else %}
             <a type="button" class="btn btn-light" href="{% url 'signin' %}">로그인하기</a>
             {% endif %}
-
             <button type="button" class="btn btn-light" id="pausebtn">일작정지</button>
             <img src="{% static 'img/tc-bt-stop-big.png' %}" style="width: 20%;" type="button" id="stopbtn">
-
           </div>
         </div>
       </div>
-
       <div class="row h-100 w-50 text-start justify-content-center">
         <div class="d-flex align-self-center">
           <div class="card-body text-center">
-
             <button type="button" class="btn btn-outline-light" disabled>내 시간</button>
             <div id='box' class="box">
               <div id='timerBox' class="timerBox">
@@ -61,22 +54,15 @@
               <figcaption class="figure-caption" id="mainTitle" name="subTitle">피자한판</figcaption>
               <figcaption class="figure-caption" id="subTitle" name="subTitle">맛있는 피자를 구울 만큼의 시간이군요!</figcaption>
             </figure>
-
           </div>
-
         </div>
       </div>
-
     </div>
   </div>
-
-  <!-- Core theme JS-->
   <script src="{% static 'js/scripts.js' %}?v=1.0"></script>
-
 </header>
-
 <script>
-
+  // WEB/APP CHECK
   var filter = "win16|win32|win64|mac|macintel";
 
   if (navigator.platform) {
@@ -113,6 +99,7 @@
 
     // stopbtn 누르면 css 적용
     // 어차피 저장하면 ajax가 새로고침하니까 필요없음
+    // 나중에 DB로 시간 체크할때 사용
     // document.getElementById('stopbtn').onclick = function() { 
     //   $("#startbtn").show();
     //   $("#pausebtn").show();
@@ -145,11 +132,9 @@
         $(".fa").css("color", "#FAED7D")
         this.style.color = "#4C4C4C";
         starFlag = false;
-
         if (time == 0) {
           init();
         }
-
         timer = setInterval(function () {
           time++;
 
@@ -172,20 +157,16 @@
           }
 
           document.getElementById("time").innerHTML = th + ":" + tm + ":" + ts;
-
           //timeImg change
-
           if (document.getElementById("time").innerHTML == '00:00:02') {
             document.getElementById('timeImg').src = "{% static 'img/timeImg/popkon.png' %}"
             $("#mainTitle").text("팝콘!");
             $("#subTitle").text("맛있어!");
-
           } else if (document.getElementById("time").innerHTML == '00:00:04') {
             document.getElementById('timeImg').src = "{% static 'img/timeImg/shower.png' %}"
             $("#mainTitle").text("샤워!");
             $("#subTitle").text("좋았어!");
           }
-
         }, 1000); // END timer
       }
     }); // END startbtn click
@@ -202,7 +183,6 @@
 
     // stop btn
     $("#stopbtn").click(function () {
-
       if (time != 0) {
         $(".fa").css("color", "#FAED7D")
         this.style.color = "#4C4C4C";
@@ -228,10 +208,7 @@
         time = 0;
         init();
       } // END IF
-
     }); // END stopbtn click
-
   }
-
 </script>
 {% endblock %}

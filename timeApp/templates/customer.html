@@ -3,8 +3,8 @@
 {% block content_side %}
 <div id="content-wrapper" style="background-color: #f6f6f6;" class="d-flex justify-content-center">
   <div class="cantrion" style="margin-top: 10%; width: 90%;">
-    <h3 class="mb-0">공지사항</h3>
-    <div class="mb-1 text-muted">타임캡쳐의 주요사항을 알려드려요.</div>
+    <h3 class="mb-0">문의/건의하기</h3>
+    <div class="mb-1 text-muted">타임캡쳐에게 관심은 사랑입니다!</div>
     <br>
     <table class="table table-hover">
       <thead>
@@ -37,19 +37,19 @@
     </table>
     <br>
     <div class="d-flex justify-content-center">
-    {%if customers_posts.has_previous%}
-    <a href="?page=1">First&nbsp</a>
-    <a href="?page={{customers_posts.previous_page_number}}">Previous</a>
-    {%endif%}
-    &nbsp
-    <span>{{customers_posts.number}}</span>
-    <span>&nbsp of &nbsp</span>
-    <span>{{customers_posts.paginator.num_pages}}</span>
-    &nbsp
-    {%if customers_posts.has_next%}
-    <a href="?page={{customers_posts.next_page_number}}">Next&nbsp</a>
-    <a href="?page={{customers_posts.paginator.num_pages}}">Last</a>
-    {%endif%}
+      {%if customers_posts.has_previous%}
+      <a href="?page=1">First&nbsp</a>
+      <a href="?page={{customers_posts.previous_page_number}}">Previous</a>
+      {%endif%}
+      &nbsp
+      <span>{{customers_posts.number}}</span>
+      <span>&nbsp of &nbsp</span>
+      <span>{{customers_posts.paginator.num_pages}}</span>
+      &nbsp
+      {%if customers_posts.has_next%}
+      <a href="?page={{customers_posts.next_page_number}}">Next&nbsp</a>
+      <a href="?page={{customers_posts.paginator.num_pages}}">Last</a>
+      {%endif%}
     </div>
     <div class="d-flex justify-content-end">
       <a href="{% url 'customer_create' %}" class="btn btn-info">글쓰기</a>

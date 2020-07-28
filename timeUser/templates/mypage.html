@@ -1,12 +1,7 @@
 {% extends 'base_side.html' %}
 {% load static %}
 {% block content_side %}
-
 <div id="content-wrapper" class="d-flex justify-content-center align-items-center" style="background-color: #f6f6f6;">
-  <!-- <div class="chart-container mr-5" style="position: relative; height:30vh; width:25vw">
-
-  </div> -->
-
   <div class="chart-container" style="position: relative; height:40vh; width:30vw">
     <canvas id="myPieChart"></canvas>
     <br>
@@ -28,20 +23,17 @@
         </tr>
       </tbody>
     </table>
-
   </div>
 </div>
-
 <script>
-
   var sum = Number("{{sum}}");
   var plan = Number("{{plan}}") * 60;
-  var stat = plan-sum;
-  
+  var stat = plan - sum;
+
   if (stat < 0) {
     var stat = 0
   } else {
-    var stat = plan-sum;
+    var stat = plan - sum;
   }
 
   $("#planScore").text(plan);
@@ -79,5 +71,4 @@
     },
   });
 </script>
-
 {% endblock %}

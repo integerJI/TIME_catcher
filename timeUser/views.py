@@ -59,7 +59,6 @@ def signup(request):
 
     return render(request, 'signup.html', { "form": form })
 
-
 class Loginviews(LoginView):
     template_name = 'signin.html'
 
@@ -69,7 +68,6 @@ class Loginviews(LoginView):
 
 signin = Loginviews.as_view()
 
-
 class LogoutViews(LogoutView):
     # setting.py에 설정해준 값
     next_page = settings.LOGOUT_REDIRECT_URL
@@ -77,7 +75,6 @@ signout = LogoutViews.as_view()
 
 @login_required
 def userinfo(request):
-
     today = DateFormat(datetime.now()).format('Ymd')
 
     conn_user = request.user
@@ -180,7 +177,6 @@ class ProfileUpdateView(View):
                 'plan' : conn_profile.plan,
                 'sum' : i,                
             }
-
             return render(request, 'mypage.html', context=context)
         else :
             print('실패')
