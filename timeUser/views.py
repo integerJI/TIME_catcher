@@ -76,13 +76,13 @@ signout = LogoutViews.as_view()
 @login_required
 def userinfo(request):
     today = DateFormat(datetime.now()).format('Ymd')
-
+    print(today)
     conn_user = request.user
     conn_profile = Profile.objects.get(user=conn_user)
 
-    timesave = Timesave.objects.all()
-    sum = Timesave.objects.all().aggregate(Sum('save_date'))
-    
+    timesave = Timesave.objects.filter(input_date=today, save_user_id=conn_user)
+    sum = Timesave.objects.filter(input_date=today, save_user_id=conn_user).aggregate(Sum('save_date'))
+
     values = sum.values()
 
     for i in values:
