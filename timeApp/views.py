@@ -25,9 +25,7 @@ def timesave(request):
         timesave = Timesave()
         timesave.save_user = User.objects.get(username = request.user.get_username())
         timesave.save_date = request.POST.get('time')
-        timesave.input_year = DateFormat(datetime.now()).format('Y')
-        timesave.input_month = DateFormat(datetime.now()).format('m')
-        timesave.input_day = DateFormat(datetime.now()).format('d')
+        timesave.input_date = DateFormat(datetime.now()).format('Ymd')
         timesave.save()
         return HttpResponse(content_type='application/json')
 
