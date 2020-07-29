@@ -25,7 +25,7 @@
       </thead>
       <tbody>
         {% for customer in customers_posts %}
-        <tr>
+        <tr class="text-center">
           <th scope="row">{{ customer.id }}</th>
           <td><a href="{% url 'customer_detail' customer.id %}">{{ customer.c_title }}</a></td>
           <td>{{ customer.c_user }}</td>
