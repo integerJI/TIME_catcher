@@ -4,12 +4,40 @@
 {{notices.update_counter}}
 <div id="content-wrapper" style="background-color: #f6f6f6;" class="d-flex justify-content-center">
   <div class="cantrion" style="margin-top: 10%; width: 90%;">
-    <h1 class="card-title pricing-card-title">{{ notices.n_title }} <small
-        class="text-muted">{{ notices.n_input_date }}</small></h1>
-    <p>{{ notices.n_body }} <small class="text-muted">{{ notices.n_hit }}</small></p>
+    <h3 class="mb-0">공지사항</h3>
+    <div class="mb-1 text-muted">타임캡쳐의 주요사항을 알려드려요.</div>
+    <br>
+    <table class="table table-hover">
+      <thead>
+        <colgroup>
+          <col style="width: 15%;">
+          <col style="width: 40%;">
+          <col style="width: 15%;">
+          <col style="width: 15%;">
+          <col style="width: 15%;">
+        </colgroup>
+        <tr class="text-center table-dark">
+          <th scope="col">번호</th>
+          <th scope="col">제목</th>
+          <th scope="col">작성자</th>
+          <th scope="col">작성날짜</th>
+          <th scope="col">조회수</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="text-center">
+          <th scope="row">{{ notices.id }}</th>
+          <td>{{ notices.n_title }}</td>
+          <td>{{ notices.n_user }}</td>
+          <td>{{ notices.n_input_date | date:"Y.m.d h:i" }}</td>
+          <td>{{ notices.n_hit }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <a>{{ notices.n_body }}</a>
     <div class="d-flex justify-content-end">
-      <a href="{% url 'notices' %}" class="btn btn-info">돌아가기</a>
-      <a href="{% url 'notices_update' notices.id %}" class="btn btn-info">수정하기</a>
+      <a href="{% url 'notices' %}" class="btn btn-info">돌아가기</a>&nbsp
+      <a href="{% url 'notices_update' notices.id %}" class="btn btn-info">수정하기</a>&nbsp
       <a href="{% url 'notices_delete' notices.id %}" class="btn btn-info">삭제하기</a>
     </div>
   </div>
