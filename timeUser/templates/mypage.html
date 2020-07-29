@@ -26,9 +26,17 @@
   </div>
 </div>
 <script>
-  var sum = Number("{{sum}}");
-  var plan = Number("{{plan}}") * 60;
-  var stat = plan - sum;
+
+  var sum = Number("{{sum}}"); // 현재 시간
+
+  if (!sum) {
+    var sum = 0; // 현재 시간
+  } else {
+    var sum = Number("{{sum}}"); // 현재 시간
+  }
+
+  var plan = Number("{{plan}}") * 60; // 목표 시간
+  var stat = plan - sum; // 목표 까지 남은 시간
 
   if (stat < 0) {
     var stat = 0
