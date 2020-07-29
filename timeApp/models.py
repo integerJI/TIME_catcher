@@ -6,7 +6,9 @@ class Timesave(models.Model):
     objects = models.Manager()
     save_user = models.ForeignKey(User, on_delete = models.CASCADE)
     save_date = models.IntegerField(default=0)
-    input_date = models.DateTimeField('date published', default=timezone.now)
+    input_year = models.IntegerField(default=0, null=True, blank=True)
+    input_month = models.IntegerField(default=0, null=True, blank=True)
+    input_day = models.IntegerField(default=0, null=True, blank=True)
 
     def __str__(self):
         return '%s - %s' % (self.save_user, self.save_date) 

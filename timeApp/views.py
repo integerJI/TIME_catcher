@@ -12,6 +12,8 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from django.db.models import Sum
 from timeUser.models import Profile
+from datetime import datetime
+from django.utils.dateformat import DateFormat
 
 def index(request):
     return render(request, 'index.html')
@@ -23,6 +25,9 @@ def timesave(request):
         timesave = Timesave()
         timesave.save_user = User.objects.get(username = request.user.get_username())
         timesave.save_date = request.POST.get('time')
+        timesave.input_year = DateFormat(datetime.now()).format('Y')
+        timesave.input_month = DateFormat(datetime.now()).format('m')
+        timesave.input_day = DateFormat(datetime.now()).format('d')
         timesave.save()
         return HttpResponse(content_type='application/json')
 
