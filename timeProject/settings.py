@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -28,17 +27,19 @@ from django.core.exceptions import ImproperlyConfigured
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
+# 아래에 설정 된 BASE_DIR의 위치에서 'secrets.json'이란 파일을 찾아 secret_file 변수에 넣어준다.
 secret_file = os.path.join(BASE_DIR, 'secrets.json')
 
+# 해당 파일 open (python open 함수)
 with open(secret_file) as f:
     secrets = json.loads(f.read())
 
+# secret 파일을 가져온다. 그리고 console에 로그로 남기기
 def get_secret(setting, secrets=secrets):
     try:
         return secrets[setting]
@@ -46,14 +47,13 @@ def get_secret(setting, secrets=secrets):
         error_msg = "Set the {} environment variable".format(setting)
         raise ImproperlyConfigured(error_msg)
 
+# SECRET_KEY이란 변수에 가져온 SECRET_KEY를 넣는다.
 SECRET_KEY = get_secret("SECRET_KEY")
-
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -157,12 +157,15 @@ LOGOUT_REDIRECT_URL = 'index'
 
 STATIC_URL = '/static/'
 
+# timeApp아래에 있는 static 폴더에서 재료들을 모아 165번으로 모은다.
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'timeApp', 'static')
 ]
 
+# BASE_DIR의 static로 모은다.
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+# heroku 설정
 # Heroku: Update database configuration from $DATABASE_URL.
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
