@@ -101,15 +101,15 @@ def userinfo(request): # mypage 시작
     return render(request, 'mypage.html', context=context) # context값과 함께 mypage.html을 호출
 
 class ProfileUpdateView(View): # 프로필 수정
-    def get(self, request):
+    def get(self, request): # get 방식 일때
         user = get_object_or_404(User, pk=request.user.pk) 
 
         conn_user = request.user
         conn_profile = Profile.objects.get(user=conn_user)
 
-        if hasattr(user, 'profile'):  
+        if hasattr(user, 'profile'): # profile의 정보를 가져와서 initial에 넣어줌
             profile = user.profile
-            profile_form = ProfileUpdateForm(initial={
+            profile_form = ProfileUpdateForm(initial={ # 이곳에 넣으면 기존 글의 양식을 html from 에 넣을 수 있음
                 'nick': profile.nick,
                 'birth_date' : profile.birth_date,
                 'plan' : profile.plan,
@@ -128,7 +128,7 @@ class ProfileUpdateView(View): # 프로필 수정
 
         return render(request, 'profile_update.html', context=context)
 
-    def post(self, request):
+    def post(self, request): # post 방식 일 경우 (저장할 때)
         u = User.objects.get(id=request.user.pk)       
 
         conn_user = request.user
@@ -161,7 +161,7 @@ class ProfileUpdateView(View): # 프로필 수정
             profile_form = ProfileUpdateForm(request.POST, request.FILES)
 
         # Profile 폼
-        if profile_form.is_valid():
+        if profile_form.is_valid(): # 만약 from에 값이 있을 경우
             profile = profile_form.save(commit=False)
             u.password = request.POST['user-password1']
             profile.user = u
@@ -169,7 +169,7 @@ class ProfileUpdateView(View): # 프로필 수정
             profile.birth_date = changeBirth
             profile.plan = request.POST['profile-plan']
             profile.save()
-            print('정보 수정 성공')
+            print('정보 수정 성공') # console 창에 로그 출력
             context = {
                 'id' : u.username,
                 'nick' : profile.nick,
@@ -180,5 +180,5 @@ class ProfileUpdateView(View): # 프로필 수정
             }
             return render(request, 'mypage.html', context=context)
         else :
-            print('실패')
+            print('실패') #안되면 그냥 로그로 실패만 넣어 줌..
         return redirect('mypage', pk=request.user.pk) 
