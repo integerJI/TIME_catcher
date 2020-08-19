@@ -18,6 +18,7 @@ from django.utils.dateformat import DateFormat
 def index(request):
     return render(request, 'index.html')
 
+# 시간 저장
 @login_required
 @require_POST
 def timesave(request):
@@ -35,6 +36,7 @@ def calender(request):
 def mobile(request):
     return render(request, 'mobile.html')
 
+# 공지사항 리스트 호출
 def notices(request):
     notices = Notices.objects.all().order_by('-id')
 
@@ -42,8 +44,8 @@ def notices(request):
     page = request.GET.get('page')
     notices_posts = paginator.get_page(page)
 
-    conn_user = request.user
-    conn_profile = Profile.objects.get(user=conn_user)
+    conn_user = request.user # 현재 접속중인 user 정보를 가져와 conn_user에 넣는다.
+    conn_profile = Profile.objects.get(user=conn_user) # Profile DB에서 접속 유저와 같은 데이터를 가져온다.
 
     context = {
         'id' : conn_user.username,
@@ -54,6 +56,7 @@ def notices(request):
 
     return render(request, 'notices.html', context=context)
 
+# 공지사항 글 쓰기 페이지 호출
 def notices_create(request):
     conn_user = request.user
     conn_profile = Profile.objects.get(user=conn_user)
@@ -65,6 +68,7 @@ def notices_create(request):
 
     return render(request, 'notices_create.html', context=context)
 
+# 공지사항 글 쓰기 
 def notices_save(request):
     notices = Notices()
 
