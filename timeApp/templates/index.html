@@ -29,12 +29,14 @@
                         color: #3e3a39;">
               타임캐쳐,<br>더 나은<br>내일을 위한 선택</h1>
             {% if user.is_authenticated %}
-            <img src="{% static 'img/tc-bt-start-big.png' %}" style="width: 20%;" type="button" id="startbtn">
+            <button type="button" class="btn btn-outline-light font-weight-normal" id="startbtn">시작하기</button>
+            <!-- <img src="{% static 'img/tc-bt-start-big.png' %}" style="width: 20%;" type="button" id="startbtn"> -->
             {% else %}
-            <a type="button" class="btn btn-light font-weight-normal" href="{% url 'signin' %}">로그인하기</a>
+            <a type="button" class="btn btn-outline-light font-weight-light" href="{% url 'signin' %}">로그인하기</a>
             {% endif %}
-            <button type="button" class="btn btn-light font-weight-normal" id="pausebtn">일시정지</button>
-            <img src="{% static 'img/tc-bt-stop-big.png' %}" style="width: 20%;" type="button" id="stopbtn">
+            <button type="button" class="btn btn-outline-light font-weight-light" id="pausebtn">일시정지</button>
+            <button type="button" class="btn btn-outline-light font-weight-light" id="stopbtn">기록완료</button>
+            <!-- <img src="{% static 'img/tc-bt-stop-big.png' %}" style="width: 20%;" type="butt  on" id="stopbtn"> -->
           </div>
         </div>
       </div>
@@ -51,7 +53,7 @@
             <figure class="figure">
               <img src="{% static 'img/timeImg/pizza.png' %}" id="timeImg" name="timeImg"
                 class="figure-img img-fluid rounded" alt="timeImg">
-              <figcaption class="figure-caption" id="mainTitle" name="subTitle">피자한판</figcaption>
+              <figcaption class="figure-caption" id="mainTitle" name="subTitle">피자한판!</figcaption>
               <figcaption class="figure-caption" id="subTitle" name="subTitle">맛있는 피자를 구울 만큼의 시간이군요!</figcaption>
             </figure>
           </div>
@@ -158,14 +160,14 @@
 
           document.getElementById("time").innerHTML = th + ":" + tm + ":" + ts;
           //timeImg change
-          if (document.getElementById("time").innerHTML == '00:00:02') {
+          if (document.getElementById("time").innerHTML == '00:00:10') {
             document.getElementById('timeImg').src = "{% static 'img/timeImg/popkon.png' %}"
             $("#mainTitle").text("팝콘!");
-            $("#subTitle").text("맛있어!");
-          } else if (document.getElementById("time").innerHTML == '00:00:04') {
+            $("#subTitle").text("이 시간이면 팝콘을 만들 수 있어요!");
+          } else if (document.getElementById("time").innerHTML == '00:02:00') {
             document.getElementById('timeImg').src = "{% static 'img/timeImg/shower.png' %}"
             $("#mainTitle").text("샤워!");
-            $("#subTitle").text("좋았어!");
+            $("#subTitle").text("느긋하게 샤워할 시간이 모였습니다.");
           }
         }, 1000); // END timer
       }
